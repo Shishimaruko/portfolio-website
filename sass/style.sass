@@ -1,0 +1,856 @@
+// ============================================================
+// File
+// ============================================================
+
+@import url('https://fonts.googleapis.com/css2?family=Sorts+Mill+Goudy:ital@0;1&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap')
+@import 'text_button_animation'
+@import 'text_draw_outline_animation'
+
+// ============================================================
+// Variant
+// ============================================================
+
+$gray: #414141
+$cta: #1D4E6A
+
+// ============================================================
+// General
+// ============================================================
+
+*
+	position: relative
+	box-sizing: border-box
+	margin: 0
+	padding: 0
+	font-family: 'Source Sans 3', sans-serif
+
+a
+	font-family: 'Sorts Mill Goudy', serif
+	color: #04161D
+	text-decoration: none
+
+// ============================================================
+// Navigation
+// ============================================================
+
+nav
+	width: 100vw
+	padding: 20px 60px
+	display: flex
+	justify-content: space-between
+	align-items: center
+	position: fixed
+	left: 0
+	top: 0
+	width: 100%
+	z-index: 1000
+	background-color: transparent
+	opacity: 1
+	transition: all 0.5s 0.2s ease-in-out
+	backdrop-filter: blur(5px)
+	ul
+		display: flex
+		transition: all 0.5s 0.2s ease-in-out
+		gap: 60px
+	li
+		list-style: none
+		font-size: 20px
+
+@media (min-width: 441px)
+	.nav-hidden
+		transform: translateY(-100%)
+		opacity: 0
+
+@media (max-width: 440px)
+	nav
+		padding: 20px
+
+		ul
+			position: absolute
+			width: 100vw
+			height: calc(100vh - 80px)
+			left: 100vw
+			top: 80px
+			padding: 40px
+			z-index: 1000
+			background-color: #E1EAF2
+			flex-direction: column
+			transition: all 0.5s
+			box-shadow: -10px 5px 30px rgba(black, 0.15)
+		&.nav_open ul
+				left: 0
+
+		li
+			font-size: 24px
+
+// ============================================================
+// Lauout
+// ============================================================
+
+html, body
+	scroll-behavior: smooth
+	overflow-x: hidden
+
+body
+	background-color: #EEF3F8
+
+section
+	width: 100vw
+	height: 100vh
+
+.container
+	width: 100%
+	height: 100%
+	position: absolute
+	padding: 20px
+	left: 0
+	top: 0
+	z-index: 1
+
+.section_title
+	width: 50%
+	max-width: 600px
+	z-index: 2 // 壓在隔線上
+
+// 描線動畫
+.grid-container
+	width: 100%
+	height: 100%
+	display: grid
+		
+svg.grid-layout-lines
+	width: 100%
+	height: 100%
+	position: absolute
+	inset: 0 
+	pointer-events: none
+	z-index: 1
+	
+	line
+		stroke: #B3BDC9
+		stroke-width: 0.5px
+		vector-effect: non-scaling-stroke
+		stroke-dasharray: 2000
+		stroke-dashoffset: 2000
+		transition: stroke-dashoffset 1.5s cubic-bezier(0.4, 0, 0.2, 1)
+
+	&.is-active
+		line
+			stroke-dashoffset: 0
+
+@media (min-width: 441px)
+	.m-only
+		display: none !important
+
+@media (max-width: 440px)
+	.m-hide
+		display: none !important
+
+// ============================================================
+// Hero Section
+// ============================================================
+
+section#hero
+	padding: 80px 20px
+
+	.section_title
+		width: 60%
+		max-width: 600px
+		margin-left: 8vw
+		margin-top: 25vh
+
+	.tips
+		font-family: 'Sorts Mill Goudy', serif
+		font-size: 18px
+		position: absolute
+		left: 50%
+		transform: translateX(-50%)
+		opacity: 0
+		transition: all 0.5s
+		animation: showbtn 0.5s 2.7s forwards ease-in
+
+	p
+		font-size: 24px
+		max-width: 430px
+		font-weight: 300
+		letter-spacing: 0.1em
+
+	canvas
+		display: block
+		position: absolute
+		left: 0
+		top: 0
+		z-index: -1
+
+.big-logo
+	position: absolute
+	top: 0
+	right: 10vw
+	z-index: -1
+	opacity: 0.2
+
+.draw-path-infinite
+	stroke: url(#lineGradient) !important
+	stroke-width: 2px
+	stroke-linecap: round
+	fill: none
+
+	// 第一個數字是線條長度，第二個是間隔
+	// 總長約 1300，所以 400 實線 + 900 空白剛好是一圈
+	stroke-dasharray: 400, 900 
+	
+	// 初始位置在最上方（負值）
+	stroke-dashoffset: -1300
+	
+	// linear 讓電流感更均勻，infinite 達成循環
+	animation: electricity 4s linear infinite
+
+	&:nth-of-type(1)
+		animation-delay: 0s
+	&:nth-of-type(2)
+		animation-delay: 0.8s
+	&:nth-of-type(3)
+		animation-delay: 1.6s
+	&:nth-of-type(4)
+		animation-delay: 2.4s
+
+@keyframes electricity
+	0%
+		stroke-dashoffset: -1300 // 起點（上方之外）
+		opacity: 0
+	10%
+		opacity: 1
+	90%
+		opacity: 1
+	100%
+		stroke-dashoffset: 1300 // 終點（下方之外）
+		opacity: 0
+
+.draw-path-single
+	stroke: url(#lineGradient) !important
+	stroke-width: 2px
+	stroke-linecap: round
+	fill: none
+	
+	// 初始狀態
+	stroke-dasharray: 0, 1300 
+	stroke-dashoffset: 0
+	
+	// 保持 forwards 讓動畫結束後固定
+	animation: fillPathUp 3s ease-out forwards
+
+	&:nth-of-type(1)
+		animation-delay: 0s
+	&:nth-of-type(2)
+		animation-delay: 0.25s
+	&:nth-of-type(3)
+		animation-delay: 0.5s
+	&:nth-of-type(4)
+		animation-delay: 0.75s
+
+@keyframes fillPathUp
+	0%
+		// 關鍵：將 offset 設為負值，線條就會從路徑的另一端（底部）出現
+		stroke-dasharray: 100, 1300
+		stroke-dashoffset: -1200 
+		opacity: 0
+	20%
+		opacity: 1
+	100%
+		// 回到 0，代表線條完全歸位並填滿
+		stroke-dasharray: 1300, 0
+		stroke-dashoffset: 0
+		opacity: 1
+
+@keyframes showbtn
+	0%
+		opacity: 0
+		bottom: 9vh
+	
+	100%
+		opacity: 1
+		bottom: 17vh
+
+@media (max-width: 440px)
+	section#hero
+		overflow: hidden
+		.section_title
+			width: 100%
+			max-width: 70vw
+			margin-left: 10px
+			backdrop-filter: blur(3px)
+		p
+			font-size: 20px
+		.big-logo
+			max-height: 100vh
+			width: 100vw
+
+// ============================================================
+// UI Section 
+// ============================================================
+
+section#ui
+	.grid-container
+		padding: 8vh 6vw 2vh
+		grid-template-columns: 25vw 3vw 1fr
+		grid-template-rows: 1fr
+
+	.section_title
+		width: 100%
+
+	.animation-wrapper
+		width: 222px
+		height: 18vh
+		margin-bottom: 0px
+		margin-top: 0
+
+	.gallery_menu
+		display: grid
+		height: calc(100% - 18.5vh)
+		grid-template-rows: 1fr 1fr 1fr 1fr
+		.item
+			padding: 12px
+			opacity: 0.15
+			transition: opacity 0.3s ease
+			&::before,
+			&::after
+				opacity: inherit
+			p
+				font-size: 30px
+			.sub
+				font-size: 16px
+				font-style: italic
+				font-weight: 300
+				opacity: 0
+			&.selected
+				opacity: 1
+				background-color: #E1EAF2
+				&::before
+					content: "\201C"
+					position: absolute
+					font-size: 34px
+					left: -18px
+					top: 12px
+				&::after
+					content: "\201D"
+					position: absolute
+					font-size: 34px
+					right: -16px
+					top: 12px
+				.sub
+					opacity: 0.5
+
+	.grid-item.item-gallery
+		grid-column: 3
+		grid-row: 1 / 6
+
+	.gallery
+		height: 100%
+		overflow: hidden
+		background-color: white
+		.img-wrapper
+			display: block	
+			position: absolute
+			top: 0
+			left: 0
+			width: 100%
+			height: auto // 讓高度隨圖片撐開
+			opacity: 0
+			visibility: hidden
+			will-change: transform // 提升效能
+			img
+				width: 100%
+				height: auto // 確保長圖依比例顯示
+				display: block
+
+@media (max-width: 440px)
+	section#ui
+		.grid-container
+			grid-template-columns: 1fr
+			grid-template-rows: 25vh 3vh 1fr
+
+		.grid-item.item-gallery
+			grid-column: auto
+			grid-row: auto
+
+		.animation-wrapper
+			width: 70%
+			height: 100px
+
+		.gallery_menu
+			display: block
+			height: 15vh
+			.item
+				opacity: 1
+				position: absolute
+				opacity: 0
+				padding-top: 4px
+				&.selected
+					background-color: #EEF3F8
+				&::before,
+				&::after
+					display: none
+
+// ============================================================
+// UX Section
+// ============================================================
+
+section#ux
+	background-color: black
+	overflow: hidden
+
+	.stroke-text
+		&.base
+			stroke: rgba(white, 0.5)
+		&.filled
+			fill: white
+
+	.container
+		display: flex
+		flex-direction: column
+		justify-content: space-between
+		padding: 120px 80px
+
+	.content
+		display: flex
+		justify-content: space-between
+		align-items: flex-end
+
+	.tools
+		display: flex
+		flex-wrap: wrap
+		gap: 28px 40px
+		max-width: 600px
+		width: 55%
+		height: fit-content
+		img
+			opacity: 0.7
+			align-items: center
+			filter: brightness(0) invert(1)
+		&::before
+			content: 'Tools'
+			position: absolute
+			left: 0
+			top: -40px
+			color: white
+			font-family: 'Source Sans 3', sans-serif
+			font-size: 18px
+			opacity: 0.7
+
+	.data
+		margin-top: 60px
+		p
+			font-size: 36px
+			text-align: right
+			color: white
+			&:last-of-type
+				font-family: 'Sorts Mill Goudy', serif
+
+		.number
+			font-size: 120px
+			line-height: 100px
+			font-weight: 100
+
+#particle-section
+	width: 100%
+	height: 100%
+	opacity: 0
+	transition: opacity 2s cubic-bezier(0.4, 0, 0.2, 1)
+	background: radial-gradient(circle at center, rgb(15, 20, 30) 0%, rgb(0, 0, 0) 100%)
+	
+	&.is-visible
+		opacity: 1
+
+@media (max-width: 440px)
+	section#ux
+		.container
+			padding: 80px 6vw
+
+		.section_title
+			width: 80%
+
+		#particle-section
+			width: 100vw
+			height: 100vh
+
+		.content:last-of-type
+			flex-direction: column-reverse
+			align-items: center
+			gap: 100px
+
+		.data p
+			text-align: center
+			margin-top: 20px
+			&.number
+				font-size: 140px
+
+		.tools
+			width: 100%
+			gap: 12px 16px
+			img
+				height: 22px
+
+
+// ============================================================
+// Graphic Section
+// ============================================================
+
+section#graphic
+	.grid-container
+		padding: 8vh 6vw 2vh
+		grid-template-columns: 1fr 3vw 1fr 3vw 1fr
+
+	.section_title
+		width: 100%
+
+	.animation-wrapper
+		width: 280px
+		margin-bottom: 0px
+
+	.grid-item.gallery-wrapper // 第一張展示卡，不滑動
+		grid-column: 3 / -1
+		position: absolute
+		top: 8vh
+		right: 0vw
+		width: 57.7vw
+		height: 90vh
+		pointer-events: none
+		background-color: #E1EAF2
+		background-color: white
+
+		display: flex
+		flex-wrap: wrap
+		align-items: center
+		justify-content: center
+		padding: 20px 3vw
+		gap: 10px
+		img
+			display: block
+			min-width: 150px
+			width: 40%
+			height: auto
+
+		.card
+			position: absolute
+			overflow: hidden
+			transform: translateX(120vw)
+			top: 0
+
+		.card-1 // 第二張展示卡
+			width: 60vw
+			height: 90vh
+			background-color: #646F79
+			// background-color: #2E3D4B
+			z-index: 2
+
+			display: flex
+			flex-wrap: wrap
+			align-items: center
+			padding: 20px 3vw
+			gap: 20px
+			img
+				display: block
+				min-width: 120px
+				width: 30%
+				height: auto
+				aspect-ratio: 1 / 1
+
+		.card-2 // 第三張展示卡
+			width: 60vw
+			height: 90vh
+			background-color: #2E3D4B
+			z-index: 3
+			img
+				width: 100%
+
+@media (max-width: 440px)
+	section#graphic
+		grid-template-columns: 1fr
+		grid-template-rows: 1fr 3vh 1fr
+
+		.grid-item.gallery-wrapper
+			grid-column: auto
+			top: 22vh
+			right: 0vw
+			width: 94vw
+			height: 76vh
+			img
+				min-width: 60px
+
+			.card-1
+				width: 91vw
+				height: 76vh
+				padding: 20px 6vw
+				img
+					width: 45%
+
+			.card-2
+				width: 88vw
+				height: 76vh
+
+		.animation-wrapper
+			width: 240px
+			height: 14vh
+			margin-top: 0
+
+// ============================================================
+// Logo Section
+// ============================================================
+
+section#logo
+	.grid-container
+		padding: 10vh 6vw 8vh
+		grid-template-columns: 1fr 3vw 1fr 3vw 1fr
+		grid-template-rows: 1fr 3vh 1fr 3vh 1fr
+
+	.grid-item[data='logo']
+		background-color: white
+		overflow: hidden
+		&::after
+			content: ''
+			width: 50%
+			height: 100%
+			background-color: #252525
+			position: absolute
+			right: -50%
+			top: 0
+			z-index: 1
+			transition: all 0.3s
+			text-align: center
+		&::before
+			content: ''
+			color: white
+			font-family: 'Source Sans 3', sans-serif
+			font-size: 26px
+			text-align: center
+			line-height: 120%
+			position: absolute
+			left: 75%
+			top: 50%
+			transform: translate(-50%, -50%)
+			z-index: 2
+			transition: all 0.5s 0.15s
+			opacity: 0
+			width: 48%
+
+		&:nth-of-type(11)::before
+			content: 'Software Dev'
+		&:nth-of-type(13)::before
+			content: 'Ski School'
+		&:nth-of-type(17)::before
+			content: 'F&B'
+		&:nth-of-type(23)::before
+			content: 'Cloud Services'
+		&:nth-of-type(27)::before
+			content: 'E-commerce'
+		&:nth-of-type(29)::before
+			content: 'Crypto'
+		&:hover
+			img
+				right: 25%
+			&::before
+				opacity: 1
+			&::after
+				right: 0
+		&:nth-of-type(11):hover,
+		&:nth-of-type(13):hover,
+		&:nth-of-type(17):hover
+			img
+				transform: scale(0.6)
+
+	.section_title
+		width: 100%
+
+	.animation-wrapper
+		width: 131px
+		margin-bottom: 0px
+
+	p
+		font-size: 24px
+		font-weight: 300
+		letter-spacing: 4%
+		color: #414141
+
+	.logo
+		display: flex
+		justify-content: center
+		align-items: center
+		height: 100%
+		img
+			max-width: 80%
+			max-height: 120px
+			top: 0
+			right: 0
+			transform: scale(1)
+			transition: all 0.5s
+
+
+@media (max-width: 440px)
+	section#logo
+		.grid-container
+			padding-top: 8vh
+			grid-template-columns: 1fr 3vw 1fr
+			grid-template-rows: 16vh repeat(3, 3vh 1fr)
+
+		.grid-item:first-child
+			grid-column: 1 / -1
+			padding: 0 12px
+
+		.animation-wrapper
+			width: 35%
+			margin-top: 0
+
+		.section_title p
+				font-size: 20px
+
+		.logo img
+			max-width: 60%
+			max-height: 60%
+
+		.grid-item[data='logo']
+			&:nth-of-type(11) img,
+			&:nth-of-type(13) img,
+			&:nth-of-type(17) img
+				max-width: 85%
+
+		.grid-item[data='logo']
+			&::after
+				right: 0
+				top: auto
+				bottom: -100%
+				width: 100%
+				height: 40%
+			&::before
+				left: 50%
+				top: 80%
+				width: 100%
+				font-size: 16px
+			&:hover
+				img
+					right: 0
+					top: -20%
+				&::after
+					right: 0
+					bottom: 0
+			&:nth-of-type(11):hover,
+			&:nth-of-type(13):hover,
+			&:nth-of-type(17):hover
+				img
+					transform: scale(1)
+			&:nth-of-type(23):hover,
+			&:nth-of-type(27):hover,
+			&:nth-of-type(29):hover
+				img
+					transform: scale(0.7)
+
+// ============================================================
+// About Section
+// ============================================================
+
+section#about
+	.grid-container
+		padding: 10vh 6vw 8vh
+		grid-template-columns: 1fr 3vw 2fr
+		grid-template-rows: 1fr 3vh 1fr 3vh 1fr
+
+	.section_title
+		width: 100%
+
+	.animation-wrapper
+		width: 169px
+		margin-bottom: 0px
+
+	p
+		font-size: 22px
+		font-weight: 300
+		letter-spacing: 4%
+		color: #414141
+		max-width: 680px
+		&.name
+			font-family: 'Sorts Mill Goudy', serif
+			font-size: 40px
+			margin-top: 20px
+		&.fin
+			font-family: 'Sorts Mill Goudy', serif
+			font-style: italic
+
+	.logo
+		display: flex
+		justify-content: center
+		align-items: center
+		height: 100%
+		img
+			max-width: 80%
+			max-height: 120px
+
+@media (max-width: 440px)
+	section#about
+		.grid-container
+			padding-top: 8vh
+			grid-template-columns: 1fr
+			grid-template-rows: 8vh 3vh 1fr 3vh 2fr 3vh 1fr
+
+		.grid-item
+			padding: 0 12px
+
+		.animation-wrapper
+			width: 45%
+			margin-top: 0
+
+		p
+			font-size: 20px
+			&.name
+				font-size: 30px
+			&.fin
+				font-size: 40px
+
+		.logo
+			justify-content: start
+
+// ============================================================
+// Footer
+// ============================================================
+
+footer
+	display: flex
+	padding: 20px 40px
+	color: $gray
+	justify-content: space-between
+	border-top: 1px solid rgba($gray, 0.3)
+	p
+		font-weight: 300
+		letter-spacing: 1px
+
+.social-links
+	display: flex
+	align-items: center
+	gap: 40px
+	a
+		transition: all 0.5s
+		height: 28px
+		line-height: 28px
+		display: block
+		&::after // 懶得改圖，加大白色範圍
+			content: ''
+			width: 40px
+			height: 40px
+			border-radius: 20px
+			background-color: white
+			position: absolute
+			left: 50%
+			top: 50%
+			transform: translate(-50%, -50%)
+			z-index: -1
+		&:hover
+			opacity: 0.8
+			filter: invert(1)
+
+@media (max-width: 440px)
+	footer
+		padding: 40px 6vw 20px
+		flex-direction: column-reverse
+		align-items: center
+		gap: 20px
+		p
+			font-size: 14px
+

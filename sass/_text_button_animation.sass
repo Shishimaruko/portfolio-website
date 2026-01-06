@@ -1,0 +1,115 @@
+// ==================== 
+// 基礎變數與設定
+// ====================
+\:root
+  --btn-transition: 0.6s cubic-bezier(0.19, 1, 0.22, 1)
+  --btn-stagger: 0.03s
+  --color-accent: #1D4E6A // Hover 顏色
+
+// ==================== 
+// Arflex Button 核心動畫樣式
+// ====================
+.arflex-btn
+  display: inline-flex
+  align-items: center
+  text-decoration: none
+  color: #414141 // 初始顏色
+  cursor: pointer
+  overflow: hidden // 隱藏飛出去的字母
+  
+  // 這是 JS 產生的最外層包裹
+  .btn-content-wrapper
+    display: flex
+    align-items: center
+    flex-direction: row
+
+  // 文字容器：設定高度與超出隱藏
+  .text-container
+    position: relative
+    display: inline-block
+    overflow: hidden
+    vertical-align: middle
+
+  // 字母層：Original 在上，Hover 在下
+  .text-layer
+    display: flex
+    white-space: nowrap
+    
+    &.hover
+      position: absolute
+      top: 0
+      left: 0
+      color: var(--color-accent)
+
+  // 單個字母：最重要的設定
+  .char
+    display: inline-block // 必須是 block 或 inline-block，transform 才會生效
+    transition: transform var(--btn-transition)
+    transition-delay: calc(var(--i) * var(--btn-stagger))
+
+  // --------------------
+  // 動畫初始狀態與互動
+  // --------------------
+  
+  // 預設狀態：Original 在原位 (0)，Hover 在下方 (100%)
+  .text-layer.original .char
+    transform: translateY(0%)
+  
+  .text-layer.hover .char
+    transform: translateY(100%)
+
+  // 滑鼠懸浮狀態
+  &:hover
+    .text-layer.original .char
+      transform: translateY(-100%) // 往上飛出
+    
+    .text-layer.hover .char
+      transform: translateY(0%)    // 從下面飛進來
+
+// ==================== 
+// 箭頭 (Icon) 邏輯
+// ====================
+.icon-container
+  position: relative
+  display: inline-block
+  width: 1.2em
+  height: 1.2em
+  margin-left: 8px
+  overflow: hidden
+  flex-shrink: 0
+  vertical-align: middle
+
+.icon
+  position: absolute
+  top: 50%
+  left: 0
+  display: block
+  line-height: 1
+  // 【關鍵 1】基礎狀態不設定 transition，這樣移開滑鼠時會「瞬間重置」
+  transition: none 
+
+  &.original
+    transform: translateY(-50%)
+    opacity: 1
+
+  &.hover
+    transform: translate(-100%, -50%) // 預設在左邊外面
+    opacity: 0
+    color: var(--color-accent)
+
+// --------------------
+// 懸浮互動
+// --------------------
+
+.arflex-btn:hover
+  .icon
+    // 【關鍵 2】只有在 hover 時才賦予 transition，這會產生滑入滑出的動畫
+    transition: transform var(--btn-transition), opacity var(--btn-transition)
+
+    &.original
+      transform: translate(100%, -50%) // 往右滑出
+      opacity: 0
+    
+    &.hover
+      transform: translate(0, -50%) // 從左滑入
+      opacity: 1

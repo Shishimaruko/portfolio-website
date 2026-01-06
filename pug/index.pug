@@ -1,0 +1,449 @@
+doctype html
+html(lang="en")
+  head
+    //- basic meta
+    meta(charset="UTF-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    meta(http-equiv="X-UA-Compatible" content="ie=edge")
+    link(rel="icon" type="image/png" sizes="32x32" href="../img/meta/favicon-32x32.png")
+    link(rel="icon" type="image/png" sizes="16x16" href="../img/meta/favicon-16x16.png")
+    link(rel="apple-touch-icon" href="../img/meta/apple-touch-icon.png")
+
+    //- SEO
+    title Kollin Jhang | UI/UX Designer Portfolio
+    meta(name="description" content="Designer with 10+ years bridging UI/UX, branding, and marketing.")
+    meta(name="keywords" content="UI/UX Design, Product Design, Frontend Development, Portfolio, Kollin Jhang, Branding")
+    meta(name="author" content="Kollin Jhang")
+    
+    //- Open Graph / Facebook
+    meta(property="og:title" content="Kollin Jhang | UI/UX Designer Portfolio")
+    meta(property="og:description" content="Designer with 10+ years bridging UI/UX, branding, and marketing.")
+    meta(property="og:type" content="website")
+    meta(property="og:url" content="https://kollin-design.com")
+    meta(property="og:image" content="https://kollin-design.com/og-image.jpg")
+    //- og-image: 1200x630px 補圖
+
+    //- Twitter Card
+    meta(name="twitter:card" content="summary_large_image")
+    meta(name="twitter:title" content="Kollin Jhang | UI/UX Designer Portfolio")
+    meta(name="twitter:description" content="Designer with 10+ years bridging UI/UX, branding, and marketing.")
+    meta(name="twitter:image" content="https://kollin-design.com/og-image.jpg")
+    
+    //- JSON-LD
+    script(type="application/ld+json").
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Kollin Jhang",
+        "url": "https://kollin-design.com",
+        "jobTitle": "Senior UI/UX Designer",
+        "description": "Designer with 10+ years bridging UI/UX, branding, and marketing.",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Taipei",
+          "addressCountry": "TW"
+        },
+        "sameAs": [
+          "https://github.com/Shishimaruko",
+          "https://linkedin.com/in/kollin-jhang-6737a8173"
+        ]
+      }
+
+    link(rel="stylesheet" href="../css/style.css")
+    link(rel="canonical" href="https://kollin-design.com")
+
+  body
+    include ./_text_draw_outline.pug
+    header
+      nav#navbar
+        a(href="#hero").logo
+          img(src='../img/logo.svg' width='100%' height='32px' alt='logo')
+        ul
+          li
+            a.arflex-btn(href='#ui' data-text='Portfolio')
+          li
+            a.arflex-btn(href='#graphic' data-text='Gallery')
+          li
+            a.arflex-btn(href='#about' data-text='About')
+          li
+            a.arflex-btn(href='mailto:tonlow0@gmail.com' data-text='Contact' data-icon='true')
+        .nav-button.m-only
+          img(src='../img/icon/dehaze.svg' width='32px' hieght='32px')
+
+    main
+      //- ========================================================
+      //- Hero Section
+      //- ========================================================
+      section#hero
+        .section_title
+          +text_draw_outline(["Sense the flow.", 'Shape the future.'], 'title_hero')
+          p Turning data-driven insights into seamless interfaces and impactful brand stories.
+
+        p.tips Scroll down
+
+        //- 背景大logo：無限循環線
+        .big-logo
+          svg.animated-svg(xmlns='http://www.w3.org/2000/svg' width='495' height='924' viewBox='0 0 496 925')
+            defs
+              // 定義漸變色 ID
+              linearGradient#lineGradient(x1="0%" y1="0%" x2="0%" y2="100%" gradientUnits="userSpaceOnUse")
+                stop(offset="0%" stop-color="#44687c")
+                stop(offset="48%" stop-color="#ACDAF1")
+                stop(offset="60%" stop-color="#44687c")
+                stop(offset="77%" stop-color="#ACDAF1")
+                stop(offset="100%" stop-color="#44687c")
+              style.
+                .st0{fill:none; stroke:url(#lineGradient); stroke-linecap:round; stroke-miterlimit:10; stroke-width:2px}
+            path.st0.draw-path-infinite(d='M14.63 924.5C281.5 920.67 495.5 811.32 495.5 676.97c0-91.61-99.54-171.62-247.5-214.47S.5 339.64.5 248.03C.5 113.68 214.5 4.33 481.37.5')
+            path.st0.draw-path-infinite(d='M14.63 924.5c207.27-5.77 377.12-112.39 388.52-250.95C409.85 592.1 345.84 515.6 248 462.5 150.16 409.39 86.15 332.89 92.85 251.45 104.25 112.89 274.1 6.27 481.37.5')
+            path.st0.draw-path-infinite(d='M14.63 924.5c147.68-7.7 271.68-111.55 296.17-254.36 12.22-71.27-15.08-144.27-62.8-207.64-47.72-63.36-75.02-136.36-62.8-207.64C209.69 112.05 333.69 8.2 481.37.5')
+            path.st0.draw-path-infinite(d='M14.63 924.5c124.99-13.68 225.26-212.67 233.37-462S356.38 14.18 481.37.5')
+
+        //- 背景大logo：單次襯底線
+        .big-logo
+          svg.animated-svg(xmlns='http://www.w3.org/2000/svg' width='495' height='924' viewBox='0 0 496 925')
+            defs
+              // 定義漸變色 ID
+              linearGradient#lineGradient(x1="0%" y1="0%" x2="0%" y2="100%" gradientUnits="userSpaceOnUse")
+                stop(offset="0%" stop-color="#21495D")
+                stop(offset="50%" stop-color="#1C0F4F")
+                stop(offset="100%" stop-color="#21495D")
+              style.
+                .st0{fill:none; stroke:url(#lineGradient); stroke-linecap:round; stroke-miterlimit:10; stroke-width:2px}
+            path.st0.draw-path-single(d='M14.63 924.5C281.5 920.67 495.5 811.32 495.5 676.97c0-91.61-99.54-171.62-247.5-214.47S.5 339.64.5 248.03C.5 113.68 214.5 4.33 481.37.5')
+            path.st0.draw-path-single(d='M14.63 924.5c207.27-5.77 377.12-112.39 388.52-250.95C409.85 592.1 345.84 515.6 248 462.5 150.16 409.39 86.15 332.89 92.85 251.45 104.25 112.89 274.1 6.27 481.37.5')
+            path.st0.draw-path-single(d='M14.63 924.5c147.68-7.7 271.68-111.55 296.17-254.36 12.22-71.27-15.08-144.27-62.8-207.64-47.72-63.36-75.02-136.36-62.8-207.64C209.69 112.05 333.69 8.2 481.37.5')
+            path.st0.draw-path-single(d='M14.63 924.5c124.99-13.68 225.26-212.67 233.37-462S356.38 14.18 481.37.5')
+
+        //- 背景滑動點點牆
+        canvas#dotCanvas
+
+      //- ========================================================
+      //- UI Section
+      //- ========================================================
+      section#ui
+        .scroll-spacer
+        //- 內容層
+        .grid-container
+          .grid-item
+            .section_title
+              .m-hide
+                +text_draw_outline(['Selected', 'Works'], 'title_ui')
+              .m-only
+                +text_draw_outline('Selected Works', 'title_ui_m')
+            .gallery_menu
+              .item
+                p AIGC website
+                p.sub Role: 
+                  br
+                  | UI/UX Design, Frontend Development, Data Analysis
+              .item
+                p API website
+                p.sub Role:
+                  br
+                  | UI/UX Design, Frontend Development, Project Manager
+              .item
+                p CDN platform
+                p.sub Role:
+                  br
+                  | UI/UX Design
+              .item
+                p Ad platform
+                p.sub Role:
+                  br
+                  | UI/UX Design, Frontend Development
+
+          .grid-item
+          .grid-item.item-gallery
+            .gallery
+              .img-wrapper
+                img(src='../img/ui_project/ui-screen-1.png' width='100%' height='auto' alt='selected work' data-index='0')
+              .img-wrapper
+                img(src='../img/ui_project/ui-screen-2.png' width='100%' height='auto' alt='selected work' data-index='1')
+              .img-wrapper
+                img(src='../img/ui_project/ui-screen-3.png' width='100%' height='auto' alt='selected work' data-index='2')
+              .img-wrapper
+                img(src='../img/ui_project/ui-screen-4.png' width='100%' height='auto' alt='selected work' data-index='3')
+
+        //- 線條層
+        svg.grid-layout-lines(viewBox="0 0 100 100" preserveAspectRatio="none")
+          //- Vertical line
+          line.line-v(x1="6%" y1="0%" x2="6%" y2="100%")
+          line.line-v(x1="31%" y1="0%" x2="31%" y2="100%").m-hide
+          line.line-v(x1="34%" y1="0%" x2="34%" y2="100%").m-hide
+          line.line-v(x1="94%" y1="0%" x2="94%" y2="100%")
+
+          //- Horizontal line
+          line.line-h(x1="0" y1="0%" x2="100%" y2="0%")
+          line.line-h(x1="0" y1="8%" x2="100%" y2="8%").m-hide
+          line.line-h(x1="0" y1="26%" x2="34%" y2="26%").m-hide
+          line.line-h(x1="0" y1="44%" x2="34%" y2="44%").m-hide
+          line.line-h(x1="0" y1="62%" x2="34%" y2="62%").m-hide
+          line.line-h(x1="0" y1="80%" x2="34%" y2="80%").m-hide
+          line.line-h(x1="0" y1="98%" x2="100%" y2="98%")
+          line.line-h(x1="0" y1="100%" x2="100%" y2="100%")
+
+          //- mobile
+          line.line-h(x1="0" y1="12%" x2="100%" y2="12%").m-only
+          line.line-h(x1="0" y1="17%" x2="100%" y2="17%").m-only
+          line.line-h(x1="0" y1="20%" x2="100%" y2="20%").m-only
+          line.line-h(x1="0" y1="36%" x2="100%" y2="36%").m-only
+
+      //- ========================================================
+      //- UX Section
+      //- ========================================================
+      section#ux
+        #particle-section
+        .container
+          .content
+            .section_title
+              +text_draw_outline(['UX & Marketing', 'research'], 'title_ux')
+          .content
+            .tools
+              img(src='../img/ux_tool/logo_ga.png' width='auto' height='34px' alt='Google Analytics')
+              img(src='../img/ux_tool/logo_gtm.png' width='auto' height='34px' alt='Google Tag Manager')
+              //- img(src='../img/ux_tool/logo_gsc.png' width='auto' height='34px' alt='Google Search Console')
+              img(src='../img/ux_tool/logo_gt.png' width='auto' height='34px' alt='Google Trends')
+              img(src='../img/ux_tool/logo_hotjar.png' width='auto' height='34px' alt='Hotjar')
+              img(src='../img/ux_tool/logo_hubspot.png' width='auto' height='34px' alt='Hubspot')
+              img(src='../img/ux_tool/logo_similarweb.png' width='auto' height='34px' alt='Similarweb')
+              img(src='../img/ux_tool/logo_supabase.png' width='auto' height='34px' alt='Supabase')
+            .performance
+              //- .data(data-target="10")
+              //-   p.number 0
+              //-   p Company
+              .data(data-target="1360590")
+                p.number 0
+                p Users
+
+      //- ========================================================
+      //- Graphic Section
+      //- ========================================================
+      section#graphic
+        //- 內容層
+        .grid-container
+          //- row 1
+          .grid-item
+            .section_title
+              +text_draw_outline('Graphic design', 'title_graphic')
+          .grid-item
+          .grid-item.gallery-wrapper
+            img(src="../img/graphic_project/project_1-1.png" alt='gallery works')
+            img(src="../img/graphic_project/project_1-2.png" alt='gallery works')
+            img(src="../img/graphic_project/project_1-3.png" alt='gallery works')
+            img(src="../img/graphic_project/project_1-4.png" alt='gallery works')
+
+            .card.card-1
+              img(src="../img/graphic_project/project_2-1.png" alt='gallery works')
+              img(src="../img/graphic_project/project_2-2.png" alt='gallery works')
+              img(src="../img/graphic_project/project_2-3.png" alt='gallery works')
+              img(src="../img/graphic_project/project_2-4.png" alt='gallery works')
+              img(src="../img/graphic_project/project_2-5.png" alt='gallery works')
+              img(src="../img/graphic_project/project_2-6.png" alt='gallery works')
+              img(src="../img/graphic_project/project_2-7.png" alt='gallery works').m-hide
+              img(src="../img/graphic_project/project_2-8.png" alt='gallery works').m-hide
+              img(src="../img/graphic_project/project_2-9.png" alt='gallery works').m-hide
+
+            .card.card-2
+              img(src="../img/graphic_project/project_3-1.png" alt='gallery works')
+
+              
+        //- 線條層
+        svg.grid-layout-lines(viewBox="0 0 100 100" preserveAspectRatio="none")
+          //- Vertical line
+          line.line-v(x1="6%" y1="0%" x2="6%" y2="100%")
+          line.line-v(x1="33.3%" y1="0%" x2="33.3%" y2="100%").m-hide
+          line.line-v(x1="36.3%" y1="0%" x2="36.3%" y2="100%").m-hide
+          line.line-v(x1="94%" y1="0%" x2="94%" y2="100%")
+
+          //- Horizontal line
+          line.line-h(x1="0" y1="0%" x2="100%" y2="0%")
+          line.line-h(x1="0" y1="8%" x2="100%" y2="8%")
+          line.line-h(x1="0" y1="20%" x2="36.3%" y2="20%").m-hide
+          line.line-h(x1="0" y1="98%" x2="100%" y2="98%")
+          line.line-h(x1="0" y1="100%" x2="100%" y2="100%")
+
+          //- mobile
+          line.line-h(x1="0" y1="19%" x2="100%" y2="19%").m-only
+          line.line-h(x1="0" y1="22%" x2="100%" y2="22%").m-only
+
+      //- ========================================================
+      //- Logo Section
+      //- ========================================================
+      section#logo
+        //- 內容層
+        .grid-container
+          //- row 1
+          .grid-item
+            .section_title
+              +text_draw_outline('Logo', 'title_logo')
+              p Modern logo design across diverse industries.
+          .grid-item.m-hide
+          .grid-item.m-hide
+          .grid-item.m-hide
+          .grid-item.m-hide
+
+          //- gap row
+          .grid-item
+          .grid-item
+          .grid-item
+          .grid-item.m-hide
+          .grid-item.m-hide
+
+          //- row 2
+          .grid-item(data='logo')
+            .logo
+              img(src='../img/logo_project/logo_starryck.png' width='auto' hieght='auto' alt='Starryck')
+          .grid-item
+          .grid-item(data='logo')
+            .logo
+              img(src='../img/logo_project/logo_ride_free.png' width='auto' hieght='auto' alt='Ride Free')
+          .grid-item
+          .grid-item.m-only
+          .grid-item.m-only
+          .grid-item(data='logo')
+            .logo
+              img(src='../img/logo_project/logo_ag_pizza.png' width='auto' hieght='auto' alt='AG Pizza')
+
+          //- gap row
+          .grid-item.m-hide
+          .grid-item.m-hide
+          .grid-item.m-hide
+          .grid-item.m-hide
+          .grid-item
+
+          //- row 3
+          .grid-item(data='logo')
+            .logo
+              img(src='../img/logo_project/logo_mlytics.png' width='auto' hieght='auto' alt='Mlytics')
+          .grid-item
+          .grid-item.m-only
+          .grid-item.m-only
+          .grid-item(data='logo')
+            .logo
+              img(src='../img/logo_project/logo_za.png' width='auto' hieght='auto' alt='Za')
+          .grid-item
+          .grid-item(data='logo')
+            .logo
+              img(src='../img/logo_project/logo_edicius.png' width='auto' hieght='auto' alt='Edicius')
+
+        //- 線條層
+        svg.grid-layout-lines(viewBox="0 0 100 100" preserveAspectRatio="none")
+          //- Vertical line
+          line.line-v(x1="6%" y1="0%" x2="6%" y2="100%")
+          line.line-v(x1="33.3%" y1="0%" x2="33.3%" y2="100%").m-hide
+          line.line-v(x1="36.3%" y1="0%" x2="36.3%" y2="100%").m-hide
+          line.line-v(x1="63.6%" y1="0%" x2="63.6%" y2="100%").m-hide
+          line.line-v(x1="66.6%" y1="0%" x2="66.6%" y2="100%").m-hide
+          line.line-v(x1="94%" y1="0%" x2="94%" y2="100%")
+
+          //- mobile
+          line.line-v(x1="48.5%" y1="0%" x2="48.5%" y2="100%").m-only
+          line.line-v(x1="51.5%" y1="0%" x2="51.5%" y2="100%").m-only
+
+          //- Horizontal line
+          line.line-h(x1="0" y1="0%" x2="100%" y2="0%")
+          line.line-h(x1="0" y1="14.5%" x2="100%" y2="14.5%").m-hide
+          line.line-h(x1="0" y1="24%" x2="100%" y2="24%").m-hide
+          line.line-h(x1="0" y1="35.3%" x2="100%" y2="35.3%").m-hide
+          line.line-h(x1="0" y1="38.3%" x2="100%" y2="38.3%").m-hide
+          line.line-h(x1="0" y1="63.6%" x2="100%" y2="63.6%").m-hide
+          line.line-h(x1="0" y1="66.6%" x2="100%" y2="66.6%").m-hide
+          line.line-h(x1="0" y1="92%" x2="100%" y2="92%")
+          line.line-h(x1="0" y1="100%" x2="100%" y2="100%")
+
+          //- mobile
+          line.line-h(x1="0" y1="8%" x2="100%" y2="8%").m-only
+          line.line-h(x1="0" y1="16%" x2="100%" y2="16%").m-only
+          line.line-h(x1="0" y1="24%" x2="100%" y2="24%").m-only
+          line.line-h(x1="0" y1="27%" x2="100%" y2="27%").m-only
+          line.line-h(x1="0" y1="46.6%" x2="100%" y2="46.6%").m-only
+          line.line-h(x1="0" y1="49.6%" x2="100%" y2="49.6%").m-only
+          line.line-h(x1="0" y1="69.3%" x2="100%" y2="69.3%").m-only
+          line.line-h(x1="0" y1="72.3%" x2="100%" y2="72.3%").m-only
+
+      //- ========================================================
+      //- About Section
+      //- ========================================================
+      section#about
+        //- 內容層
+        .grid-container
+          //- row 1
+          .grid-item
+            .section_title
+              +text_draw_outline('About', 'title_about')
+          .grid-item.m-hide
+          .grid-item.m-hide
+
+          //- gap row
+          .grid-item.m-hide
+          .grid-item.m-hide
+          .grid-item
+
+          //- row 2
+          .grid-item
+            .logo
+              img(src='../img/logo.svg' width='180px' hieght='auto' alt='Logo')
+          .grid-item
+          .grid-item
+            p.name Kollin Jhang
+            p Designer with 10+ years bridging UI/UX, branding, and marketing. I help companies design products that scale—from initial concept to market-ready experiences that resonate with users and drive business results.
+
+          //- row 3
+          .grid-item.m-hide
+          .grid-item
+          .grid-item
+            p.fin “Dedicado a Max”
+
+          //- gap row
+          .grid-item.m-hide
+          .grid-item.m-hide
+          .grid-item.m-hide
+
+        //- 線條層 > 1040px
+        svg.grid-layout-lines(viewBox="0 0 100 100" preserveAspectRatio="none")
+          //- Vertical line
+          line.line-v(x1="6%" y1="0%" x2="6%" y2="100%")
+          line.line-v(x1="33.3%" y1="0%" x2="33.3%" y2="100%").m-hide
+          line.line-v(x1="36.3%" y1="0%" x2="36.3%" y2="100%").m-hide
+          line.line-v(x1="94%" y1="0%" x2="94%" y2="100%")
+
+          //- Horizontal line
+          line.line-h(x1="0" y1="0%" x2="100%" y2="0%")
+          line.line-h(x1="0" y1="14.5%" x2="100%" y2="14.5%").m-hide
+          line.line-h(x1="0" y1="24%" x2="100%" y2="24%").m-hide
+          line.line-h(x1="0" y1="35.3%" x2="100%" y2="35.3%").m-hide
+          line.line-h(x1="0" y1="38.3%" x2="100%" y2="38.3%").m-hide
+          line.line-h(x1="0" y1="63.6%" x2="100%" y2="63.6%").m-hide
+          line.line-h(x1="0" y1="66.6%" x2="100%" y2="66.6%").m-hide
+          line.line-h(x1="0" y1="92%" x2="100%" y2="92%")
+          line.line-h(x1="0" y1="100%" x2="100%" y2="100%")
+
+          //- mobile
+          line.line-h(x1="0" y1="8%" x2="100%" y2="8%").m-only
+          line.line-h(x1="0" y1="16%" x2="100%" y2="16%").m-only
+          line.line-h(x1="0" y1="19%" x2="100%" y2="19%").m-only
+          line.line-h(x1="0" y1="36%" x2="100%" y2="36%").m-only
+          line.line-h(x1="0" y1="39%" x2="100%" y2="39%").m-only
+          line.line-h(x1="0" y1="72%" x2="100%" y2="72%").m-only
+          line.line-h(x1="0" y1="75%" x2="100%" y2="75%").m-only
+
+    //- ========================================================
+    //- Footer
+    //- ========================================================
+    footer
+      p Designed by Kollin Jhang © 2026 All rights reserved.
+      .social-links
+        a(href="https://www.linkedin.com/in/kollin-jhang-6737a8173" target='_blank')
+          img(src='../img/icon/linkedin.svg' width='24px' hieght='24px' alt='linkedin')
+
+    //- ========================================================
+    //- JS
+    //- ========================================================
+    //- Animation plugin
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js")
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js")
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollToPlugin.min.js")
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js")
+
+    script(src="../js/main.js" defer)

@@ -1,0 +1,138 @@
+nav {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 40px;
+  padding: 40px; }
+
+:root {
+  --btn-transition:0.6s cubic-bezier(0.19, 1, 0.22, 1) {}
+  --btn-stagger:0.03s {}
+  --color-accent:#d4a373 {} ; }
+
+.arflex-btn {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+  vertical-align: middle; }
+
+.btn-content-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row; }
+
+.text-container {
+  position: relative;
+  overflow: hidden;
+  display: inline-block; }
+
+.text-layer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  white-space: nowrap; }
+  .text-layer.hover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: var(--color-accent); }
+
+.char {
+  display: inline-block;
+  -webkit-transition: -webkit-transform var(--btn-transition);
+  transition: -webkit-transform var(--btn-transition);
+  -o-transition: transform var(--btn-transition);
+  transition: transform var(--btn-transition);
+  transition: transform var(--btn-transition), -webkit-transform var(--btn-transition);
+  -webkit-transition-delay: calc(var(--i) * var(--btn-stagger));
+  -o-transition-delay: calc(var(--i) * var(--btn-stagger));
+  transition-delay: calc(var(--i) * var(--btn-stagger)); }
+
+.text-layer.original .char {
+  -webkit-transform: translateY(0%);
+  -ms-transform: translateY(0%);
+  transform: translateY(0%); }
+
+.text-layer.hover .char {
+  -webkit-transform: translateY(100%);
+  -ms-transform: translateY(100%);
+  transform: translateY(100%); }
+
+.arflex-btn:hover .text-layer.original .char {
+  -webkit-transform: translateY(-100%);
+  -ms-transform: translateY(-100%);
+  transform: translateY(-100%); }
+
+.arflex-btn:hover .text-layer.hover .char {
+  -webkit-transform: translateY(0%);
+  -ms-transform: translateY(0%);
+  transform: translateY(0%); }
+
+.icon-container {
+  position: relative;
+  display: inline-block;
+  width: 1.2em;
+  height: 1.2em;
+  margin-left: 8px;
+  overflow: hidden;
+  -ms-flex-negative: 0;
+  flex-shrink: 0; }
+
+.icon {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  display: block;
+  line-height: 1; }
+  .icon.original {
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    opacity: 1;
+    -webkit-transition: none;
+    -o-transition: none;
+    transition: none; }
+  .icon.hover {
+    -webkit-transform: translate(-100%, -50%);
+    -ms-transform: translate(-100%, -50%);
+    transform: translate(-100%, -50%);
+    opacity: 0;
+    -webkit-transition: none;
+    -o-transition: none;
+    transition: none; }
+
+.arflex-btn:hover .icon.original {
+  -webkit-transform: translate(100%, -50%);
+  -ms-transform: translate(100%, -50%);
+  transform: translate(100%, -50%);
+  opacity: 0;
+  -webkit-transition: opacity var(--btn-transition), -webkit-transform var(--btn-transition);
+  transition: opacity var(--btn-transition), -webkit-transform var(--btn-transition);
+  -o-transition: transform var(--btn-transition), opacity var(--btn-transition);
+  transition: transform var(--btn-transition), opacity var(--btn-transition);
+  transition: transform var(--btn-transition), opacity var(--btn-transition), -webkit-transform var(--btn-transition); }
+
+.arflex-btn:hover .icon.hover {
+  -webkit-transform: translate(0, -50%);
+  -ms-transform: translate(0, -50%);
+  transform: translate(0, -50%);
+  opacity: 1;
+  color: var(--color-accent);
+  -webkit-transition: opacity var(--btn-transition), -webkit-transform var(--btn-transition);
+  transition: opacity var(--btn-transition), -webkit-transform var(--btn-transition);
+  -o-transition: transform var(--btn-transition), opacity var(--btn-transition);
+  transition: transform var(--btn-transition), opacity var(--btn-transition);
+  transition: transform var(--btn-transition), opacity var(--btn-transition), -webkit-transform var(--btn-transition); }
