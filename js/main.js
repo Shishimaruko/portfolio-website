@@ -495,6 +495,7 @@ const createScrollTimeline = (uiSection, items, wrappers) => {
             pin: true,
             scrub: 1,
             invalidateOnRefresh: true,
+            // pinSpacing: false,
             anticipatePin: 1
         }
     });
@@ -561,6 +562,7 @@ const initGraphicAnimation = () => {
             end: "+=2000",         // 增加這個數值可以讓動畫變慢（需要滑更久）
             pin: true,             // 固定住 section
             scrub: 1,              // 動畫跟隨滾輪
+            // pinSpacing: false,
             anticipatePin: 1
         }
     });
@@ -585,105 +587,105 @@ window.addEventListener('load', initGraphicAnimation);
 // 送出/開關表單
 // ===================================================  
 
-window.addEventListener('load', () => {
-    const contactModal = document.getElementById('contact-modal');
-    const contactOpenTrigger = document.getElementById('open-contact');
-    const contactCloseTrigger = document.getElementById('close-contact');
-    const contactMainForm = document.getElementById('contact-form');
-    const contactStatusMsg = document.getElementById('result');
-    const contactSubmitBtn = document.getElementById('submit-btn');
+// window.addEventListener('load', () => {
+//     const contactModal = document.getElementById('contact-modal');
+//     const contactOpenTrigger = document.getElementById('open-contact');
+//     const contactCloseTrigger = document.getElementById('close-contact');
+//     const contactMainForm = document.getElementById('contact-form');
+//     const contactStatusMsg = document.getElementById('result');
+//     const contactSubmitBtn = document.getElementById('submit-btn');
 
-    if (!contactModal || !contactOpenTrigger) return;
+//     if (!contactModal || !contactOpenTrigger) return;
 
-    // 輔助函式：安全地更新按鈕文字 (不破壞 GSAP 字母跳動結構)
-    const updateBtnText = (btn, newText) => {
-        const textLayers = btn.querySelectorAll('.text-layer');
-        if (textLayers.length > 0) {
-            textLayers.forEach(layer => {
-                // 如果你有用之前的 createTextLayer 函式，這裡也要重新生成字母
-                // 簡單做法：直接更換層內文字
-                layer.innerText = newText;
-            });
-        } else {
-            btn.innerText = newText;
-        }
-    };
+//     // 輔助函式：安全地更新按鈕文字 (不破壞 GSAP 字母跳動結構)
+//     const updateBtnText = (btn, newText) => {
+//         const textLayers = btn.querySelectorAll('.text-layer');
+//         if (textLayers.length > 0) {
+//             textLayers.forEach(layer => {
+//                 // 如果你有用之前的 createTextLayer 函式，這裡也要重新生成字母
+//                 // 簡單做法：直接更換層內文字
+//                 layer.innerText = newText;
+//             });
+//         } else {
+//             btn.innerText = newText;
+//         }
+//     };
 
-    // --- 彈窗顯示控制 ---
-    contactOpenTrigger.addEventListener('click', (e) => {
-        e.preventDefault();
-        contactModal.style.display = 'flex';
-        // 重置狀態
-        contactStatusMsg.style.display = 'none';
-        contactSubmitBtn.disabled = false;
-        updateBtnText(contactSubmitBtn, "Send Message");
-    });
+//     // --- 彈窗顯示控制 ---
+//     contactOpenTrigger.addEventListener('click', (e) => {
+//         e.preventDefault();
+//         contactModal.style.display = 'flex';
+//         // 重置狀態
+//         contactStatusMsg.style.display = 'none';
+//         contactSubmitBtn.disabled = false;
+//         updateBtnText(contactSubmitBtn, "Send Message");
+//     });
 
-    if (contactCloseTrigger) {
-        contactCloseTrigger.addEventListener('click', () => {
-            contactModal.style.display = 'none';
-        });
-    }
+//     if (contactCloseTrigger) {
+//         contactCloseTrigger.addEventListener('click', () => {
+//             contactModal.style.display = 'none';
+//         });
+//     }
 
-    window.addEventListener('click', (e) => {
-        if (e.target === contactModal) {
-            contactModal.style.display = 'none';
-        }
-    });
+//     window.addEventListener('click', (e) => {
+//         if (e.target === contactModal) {
+//             contactModal.style.display = 'none';
+//         }
+//     });
 
-    // --- 表單發送邏輯 ---
-    if (contactMainForm) {
-        contactMainForm.addEventListener('submit', function(e) {
-            e.preventDefault();
+//     // --- 表單發送邏輯 ---
+//     if (contactMainForm) {
+//         contactMainForm.addEventListener('submit', function(e) {
+//             e.preventDefault();
 
-            contactStatusMsg.style.display = "block";
-            contactStatusMsg.innerHTML = "Sending...";
-            contactStatusMsg.style.color = "#888"; 
-            contactSubmitBtn.disabled = true;
-            updateBtnText(contactSubmitBtn, "Sending...");
+//             contactStatusMsg.style.display = "block";
+//             contactStatusMsg.innerHTML = "Sending...";
+//             contactStatusMsg.style.color = "#888"; 
+//             contactSubmitBtn.disabled = true;
+//             updateBtnText(contactSubmitBtn, "Sending...");
 
-            const formData = new FormData(contactMainForm);
-            const formObject = Object.fromEntries(formData);
-            const formJson = JSON.stringify(formObject);
+//             const formData = new FormData(contactMainForm);
+//             const formObject = Object.fromEntries(formData);
+//             const formJson = JSON.stringify(formObject);
 
-            fetch('https://api.web3forms.com/submit', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/json'
-                },
-                body: formJson
-            })
-            .then(async (res) => {
-                let resData = await res.json();
-                if (res.status == 200) {
-                    contactStatusMsg.innerHTML = "✨ Message sent! I'll be in touch shortly.";
-                    contactStatusMsg.style.color = "#2ecc71";
-                    contactMainForm.reset();
-                    updateBtnText(contactSubmitBtn, "Success!");
+//             fetch('https://api.web3forms.com/submit', {
+//                 method: 'POST',
+//                 headers: {
+//                     'Content-Type': 'application/json',
+//                     'Accept': 'application/json'
+//                 },
+//                 body: formJson
+//             })
+//             .then(async (res) => {
+//                 let resData = await res.json();
+//                 if (res.status == 200) {
+//                     contactStatusMsg.innerHTML = "✨ Message sent! I'll be in touch shortly.";
+//                     contactStatusMsg.style.color = "#2ecc71";
+//                     contactMainForm.reset();
+//                     updateBtnText(contactSubmitBtn, "Success!");
                     
-                    setTimeout(() => {
-                        contactModal.style.display = 'none';
-                    }, 2000);
-                } else {
-                    contactStatusMsg.innerHTML = resData.message || "Error occurred.";
-                    contactStatusMsg.style.color = "#e74c3c";
-                    updateBtnText(contactSubmitBtn, "Try Again");
-                }
-            })
-            .catch(err => {
-                contactStatusMsg.innerHTML = "Connection error!";
-                contactStatusMsg.style.color = "#e74c3c";
-                updateBtnText(contactSubmitBtn, "Error");
-            })
-            .then(() => {
-                contactSubmitBtn.disabled = false;
-                setTimeout(() => {
-                    contactStatusMsg.style.display = "none";
-                }, 5000);
-            });
-        });
-    }
-});
+//                     setTimeout(() => {
+//                         contactModal.style.display = 'none';
+//                     }, 2000);
+//                 } else {
+//                     contactStatusMsg.innerHTML = resData.message || "Error occurred.";
+//                     contactStatusMsg.style.color = "#e74c3c";
+//                     updateBtnText(contactSubmitBtn, "Try Again");
+//                 }
+//             })
+//             .catch(err => {
+//                 contactStatusMsg.innerHTML = "Connection error!";
+//                 contactStatusMsg.style.color = "#e74c3c";
+//                 updateBtnText(contactSubmitBtn, "Error");
+//             })
+//             .then(() => {
+//                 contactSubmitBtn.disabled = false;
+//                 setTimeout(() => {
+//                     contactStatusMsg.style.display = "none";
+//                 }, 5000);
+//             });
+//         });
+//     }
+// });
 
 
