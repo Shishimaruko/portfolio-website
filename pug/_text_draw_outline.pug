@@ -1,0 +1,33 @@
+//- _mixins.pug
+mixin text_draw_outline(textArray, idKey='unique')
+  - const lines = Array.isArray(textArray) ? textArray : [textArray]
+  - const gradId = 'grad-' + idKey
+  - const maskId = 'mask-' + idKey
+
+  .animation-wrapper(data-id=idKey)
+    svg(width="100%" height="auto" preserveAspectRatio="xMinYMin meet")
+      defs
+        //- 漸層維持原樣，但確保 x1 足夠遠
+        linearGradient(id=gradId gradientUnits="userSpaceOnUse" x1="-100%" y1="0%" x2="200%" y2="0%")
+          stop.stop-solid(offset="0%" stop-color="white")
+          stop.stop-edge(offset="1%" stop-color="black")
+
+        mask(id=maskId)
+          rect(x="-500%" y="-500%" width="1000%" height="1000%" fill=`url(#${gradId})`)
+
+      each line, index in lines
+        //- 重點：text-anchor='start'，x='0'
+        text.stroke-text.base(
+          x='0' 
+          y=`${index * 1.2}em` 
+          dominant-baseline='middle' 
+          text-anchor='start'
+        )= line
+
+        text.stroke-text.filled(
+          x='0' 
+          y=`${index * 1.2}em` 
+          dominant-baseline='middle' 
+          text-anchor='start' 
+          mask=`url(#${maskId})`
+        )= line

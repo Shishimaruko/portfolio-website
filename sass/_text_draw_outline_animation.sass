@@ -1,0 +1,36 @@
+$font-color: #04161D
+$font-family: 'Sorts Mill Goudy', serif
+
+.animation-wrapper
+  width: 100%
+  margin: 40px 0
+  display: flex
+  justify-content: flex-start
+  align-items: center
+  overflow: visible
+
+  svg
+    width: 100%
+    height: auto
+    display: block
+    overflow: visible
+
+.stroke-text
+  font-family: $font-family
+  font-weight: 300
+  font-size: 40px
+  letter-spacing: 0.05em
+  pointer-events: none
+  
+  @media (max-width: 768px)
+    font-size: 45px
+  
+  &.base
+    fill: transparent
+    stroke: rgba($font-color, 0.5)
+    stroke-width: 0.6px
+    visibility: hidden
+    
+  &.filled
+    fill: $font-color
+    stroke: none
