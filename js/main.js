@@ -547,41 +547,41 @@ window.addEventListener('load', initPortfolioScroll);
 // Graphic 卡片滑入進場
 // =================================================== 
 
-// const initGraphicAnimation = () => {
-//     gsap.registerPlugin(ScrollTrigger);
+const initGraphicAnimation = () => {
+    gsap.registerPlugin(ScrollTrigger);
 
-//     const section = document.querySelector('section#graphic');
-//     const cards = section.querySelectorAll('.card');
+    const section = document.querySelector('section#graphic');
+    const cards = section.querySelectorAll('.card');
 
-//     if (!section || cards.length === 0) return;
+    if (!section || cards.length === 0) return;
 
-//     const tl = gsap.timeline({
-//         scrollTrigger: {
-//             trigger: section,
-//             start: "top top",      // 當 section 頂部碰到視窗頂部時開始
-//             end: "+=2000",         // 增加這個數值可以讓動畫變慢（需要滑更久）
-//             pin: true,             // 固定住 section
-//             scrub: 1,              // 動畫跟隨滾輪
-//             // pinSpacing: false,
-//             anticipatePin: 1
-//         }
-//     });
+    const tl = gsap.timeline({
+        scrollTrigger: {
+            trigger: section,
+            start: "top top",      // 當 section 頂部碰到視窗頂部時開始
+            end: "+=2000",         // 增加這個數值可以讓動畫變慢（需要滑更久）
+            pin: true,             // 固定住 section
+            scrub: 1,              // 動畫跟隨滾輪
+            // pinSpacing: false,
+            anticipatePin: 1
+        }
+    });
 
-//     // 動畫序列
-//     tl.to(cards[0], {
-//         x: "3.3vw",                  // 第一張滑入原點位置
-//         ease: "power2.out",
-//         duration: 4
-//     })
-//     .to(cards[1], {
-//         x: "6vw",                  // 第二張滑入原點位置
-//         ease: "power2.out",
-//         duration: 4
-//     }, "-=1.5");                   // 在第一張還沒跑完時就開始 (重疊進場)
+    // 動畫序列
+    tl.to(cards[0], {
+        x: "3.3vw",                  // 第一張滑入原點位置
+        ease: "power2.out",
+        duration: 4
+    })
+    .to(cards[1], {
+        x: "6vw",                  // 第二張滑入原點位置
+        ease: "power2.out",
+        duration: 4
+    }, "-=1.5");                   // 在第一張還沒跑完時就開始 (重疊進場)
 
-// };
+};
 
-// window.addEventListener('load', initGraphicAnimation);
+window.addEventListener('load', initGraphicAnimation);
 
 // ===================================================
 // 送出/開關表單
