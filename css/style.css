@@ -176,11 +176,15 @@ a {
 #contact-modal textarea,
 #contact-modal #submit-btn {
   font-family: 'Source Sans 3', sans-serif;
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 300;
   width: 100%;
   padding: 8px 12px;
   border: 1px solid rgba(65, 65, 65, 0.4); }
+  #contact-modal input:focus,
+  #contact-modal textarea:focus,
+  #contact-modal #submit-btn:focus {
+    border-color: #1D4E6A; }
 
 #contact-modal #submit-btn {
   background-color: #1D4E6A;
@@ -190,16 +194,19 @@ a {
   border-radius: 4px;
   color: white;
   font-weight: 500; }
+  #contact-modal #submit-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed; }
 
 #contact-modal textarea {
-  height: 140px; }
+  height: 140px;
+  resize: none; }
 
 #contact-modal #result {
   font-size: 18px;
   margin-top: 15px;
   padding: 10px;
   border-radius: 4px;
-  display: none;
   text-align: center;
   -webkit-transition: all 0.3s ease;
   -o-transition: all 0.3s ease;
@@ -239,7 +246,7 @@ a {
   -webkit-box-pack: center;
   -ms-flex-pack: center;
   justify-content: center;
-  z-index: 9999;
+  z-index: 1000;
   -webkit-backdrop-filter: blur(5px);
   backdrop-filter: blur(5px); }
 
