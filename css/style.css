@@ -367,8 +367,7 @@ section {
   z-index: 2; }
 
 .pin-spacer {
-  display: none;
-  height: 0; }
+  display: none !important; }
 
 .grid-container {
   width: 100%;
