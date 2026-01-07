@@ -580,7 +580,100 @@ const initGraphicAnimation = () => {
 
 window.addEventListener('load', initGraphicAnimation);
 
+// ===================================================
+// 送出/開關表單
+// =================================================== 
 
+// 獲取彈窗相關元素
+const modal = document.getElementById('contact-modal');
+const openBtn = document.getElementById('open-contact');
+const closeBtn = document.getElementById('close-contact');
+
+// 獲取表單相關元素 (你原本的部分)
+const form = document.getElementById('contact-form');
+const result = document.getElementById('result');
+const submitBtn = document.getElementById('submit-btn');
+
+// --- 1. 彈窗顯示/隱藏控制 ---
+
+// 點擊按鈕開啟
+openBtn.addEventListener('click', () => {
+modal.style.display = 'flex';
+// 每次開啟時重置狀態
+result.style.display = 'none';
+submitBtn.disabled = false;
+});
+
+// 點擊 X 關閉
+closeBtn.addEventListener('click', () => {
+modal.style.display = 'none';
+});
+
+// 點擊彈窗外黑背景處也能關閉
+window.addEventListener('click', (e) => {
+if (e.target === modal) {
+  modal.style.display = 'none';
+}
+});
+
+// --- 2. 表單發送邏輯 (原本的功能) ---
+
+form.addEventListener('submit', function(e) {
+e.preventDefault(); // 阻止頁面跳轉
+
+// 顯示傳送中狀態
+result.style.display = "block";
+result.innerHTML = "Sending...";
+result.style.color = "#888"; 
+submitBtn.disabled = true; // 防止重複點擊
+
+const formData = new FormData(form);
+const object = Object.fromEntries(formData);
+const json = JSON.stringify(object);
+
+fetch('https://api.web3forms.com/submit', {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+    },
+    body: json
+})
+.then(async (response) => {
+    let jsonResponse = await response.json();
+    if (response.status == 200) {
+        // 成功時
+        result.innerHTML = "Thanks for reaching out! I'll be in touch shortly.";
+        result.style.color = "#2ecc71"; // 成功綠
+        form.reset(); // 清空表單
+        
+        // 💡 加強體驗：成功送出 2 秒後自動關閉彈窗
+        setTimeout(() => {
+            modal.style.display = 'none';
+        }, 2000);
+        
+    } else {
+        // 伺服器錯誤
+        console.log(response);
+        result.innerHTML = jsonResponse.message;
+        result.style.color = "#e74c3c"; // 錯誤紅
+    }
+})
+.catch(error => {
+    // 網路連線錯誤
+    console.log(error);
+    result.innerHTML = "Sorry, we couldn't send your message. Please check your connection.";
+})
+.then(function() {
+    // 恢復按鈕狀態
+    submitBtn.disabled = false;
+    
+    // 5秒後自動消失狀態訊息 (可選)
+    setTimeout(() => {
+        result.style.display = "none";
+    }, 5000);
+});
+});
 
 
 
