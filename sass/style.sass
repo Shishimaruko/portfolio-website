@@ -1,8 +1,14 @@
 // ============================================================
+<<<<<<< HEAD
 // File
 // ============================================================
 
 @import url('https://fonts.googleapis.com/css2?family=Sorts+Mill+Goudy:ital@0;1&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap')
+=======
+// Animation
+// ============================================================
+
+>>>>>>> master
 @import 'text_button_animation'
 @import 'text_draw_outline_animation'
 
@@ -30,6 +36,99 @@ a
 	text-decoration: none
 
 // ============================================================
+<<<<<<< HEAD
+=======
+// Form
+// ============================================================
+
+#contact-modal
+	h3
+		font-family: 'Sorts Mill Goudy', serif
+		font-size: 32px
+		text-align: center
+		margin-bottom: 28px
+
+	input,
+	textarea,
+	#submit-btn
+		font-family: 'Source Sans 3', sans-serif
+		font-size: 18px
+		font-weight: 300
+		width: 100%
+		padding: 8px 12px
+		border: 1px solid rgba($gray, 0.4)
+		&:focus
+			border-color: $cta
+
+	#submit-btn
+		background-color: $cta
+		padding: 16px
+		font-size: 22px
+		border: none
+		border-radius: 4px
+		color: white
+		font-weight: 500
+		&:disabled
+			opacity: 0.6
+			cursor: not-allowed
+
+	textarea
+		height: 140px
+		resize: none
+
+	#result
+		font-size: 18px
+		margin-top: 15px
+		padding: 10px
+		border-radius: 4px
+		text-align: center
+		transition: all 0.3s ease
+
+.modal-content
+	background: white
+	padding: 40px
+	border-radius: 12px
+	position: relative
+	width: 90%
+	max-width: 500px
+
+#contact-form
+	display: flex
+	flex-direction: column
+	gap: 20px
+
+.modal-overlay
+	position: fixed
+	top: 0
+	left: 0
+	width: 100%
+	height: 100%
+	background: rgba(0, 0, 0, 0.2)
+
+	display: flex
+	align-items: center
+	justify-content: center
+	z-index: 1000
+	backdrop-filter: blur(5px)
+
+.close-btn
+	position: absolute
+	top: 0px
+	right: 15px
+	font-size: 40px
+	font-weight: 200
+	border: none
+	background: none
+	cursor: pointer
+	color: #333
+	opacity: 0.4
+
+@media (max-width: 440px)
+	.modal-content
+		padding: 24px
+
+// ============================================================
+>>>>>>> master
 // Navigation
 // ============================================================
 
@@ -56,12 +155,23 @@ nav
 		list-style: none
 		font-size: 20px
 
+<<<<<<< HEAD
 @media (min-width: 441px)
+=======
+@media (min-width: 769px)
+>>>>>>> master
 	.nav-hidden
 		transform: translateY(-100%)
 		opacity: 0
 
+<<<<<<< HEAD
 @media (max-width: 440px)
+=======
+	.nav-button
+		display: none
+
+@media (max-width: 768px)
+>>>>>>> master
 	nav
 		padding: 20px
 
@@ -78,7 +188,11 @@ nav
 			transition: all 0.5s
 			box-shadow: -10px 5px 30px rgba(black, 0.15)
 		&.nav_open ul
+<<<<<<< HEAD
 				left: 0
+=======
+			left: 0
+>>>>>>> master
 
 		li
 			font-size: 24px
@@ -107,6 +221,13 @@ section
 	top: 0
 	z-index: 1
 
+<<<<<<< HEAD
+=======
+.img-bundle
+	width: 100%
+	height: auto
+
+>>>>>>> master
 .section_title
 	width: 50%
 	max-width: 600px
@@ -182,6 +303,7 @@ section#hero
 		top: 0
 		z-index: -1
 
+<<<<<<< HEAD
 .big-logo
 	position: absolute
 	top: 0
@@ -191,6 +313,17 @@ section#hero
 
 .draw-path-infinite
 	stroke: url(#lineGradient) !important
+=======
+	.big-logo
+		position: absolute
+		top: 0
+		right: 10vw
+		z-index: -1
+		opacity: 0.2
+
+.draw-path-infinite
+	stroke: url(#lineGradient-infinite) !important
+>>>>>>> master
 	stroke-width: 2px
 	stroke-linecap: round
 	fill: none
@@ -227,7 +360,11 @@ section#hero
 		opacity: 0
 
 .draw-path-single
+<<<<<<< HEAD
 	stroke: url(#lineGradient) !important
+=======
+	stroke: url(#lineGradient-single) !important
+>>>>>>> master
 	stroke-width: 2px
 	stroke-linecap: round
 	fill: none
@@ -269,7 +406,11 @@ section#hero
 	
 	100%
 		opacity: 1
+<<<<<<< HEAD
 		bottom: 17vh
+=======
+		bottom: 15vh
+>>>>>>> master
 
 @media (max-width: 440px)
 	section#hero
@@ -282,8 +423,12 @@ section#hero
 		p
 			font-size: 20px
 		.big-logo
+<<<<<<< HEAD
 			max-height: 100vh
 			width: 100vw
+=======
+			right: 2vw
+>>>>>>> master
 
 // ============================================================
 // UI Section 
@@ -310,6 +455,10 @@ section#ui
 		grid-template-rows: 1fr 1fr 1fr 1fr
 		.item
 			padding: 12px
+<<<<<<< HEAD
+=======
+			padding-bottom: 0
+>>>>>>> master
 			opacity: 0.15
 			transition: opacity 0.3s ease
 			&::before,
@@ -319,9 +468,33 @@ section#ui
 				font-size: 30px
 			.sub
 				font-size: 16px
+<<<<<<< HEAD
 				font-style: italic
 				font-weight: 300
 				opacity: 0
+=======
+				line-height: 110%
+				font-style: italic
+				font-weight: 300
+				opacity: 0
+			a
+				position: absolute
+				right: 6px
+				top: 22px
+				display: flex
+				align-items: center
+				gap: 4px
+				background-color: #E1EAF2
+				border-radius: 20px
+				padding: 4px 12px
+				transition: all 0.3s
+				visibility: hidden
+				&:hover
+					top: 18px
+					background-color: #EEF3F8
+					box-shadow: 0 4px 0 rgba(black, 0.1)
+
+>>>>>>> master
 			&.selected
 				opacity: 1
 				background-color: #E1EAF2
@@ -339,6 +512,12 @@ section#ui
 					top: 12px
 				.sub
 					opacity: 0.5
+<<<<<<< HEAD
+=======
+				a
+					visibility: visible
+					
+>>>>>>> master
 
 	.grid-item.item-gallery
 		grid-column: 3
@@ -363,6 +542,14 @@ section#ui
 				height: auto // 確保長圖依比例顯示
 				display: block
 
+<<<<<<< HEAD
+=======
+@media (max-width: 820px) // iPad Air
+	section#ui
+		.animation-wrapper
+			max-width: 160px
+
+>>>>>>> master
 @media (max-width: 440px)
 	section#ui
 		.grid-container
@@ -376,11 +563,19 @@ section#ui
 		.animation-wrapper
 			width: 70%
 			height: 100px
+<<<<<<< HEAD
+=======
+			top: 12px
+>>>>>>> master
 
 		.gallery_menu
 			display: block
 			height: 15vh
 			.item
+<<<<<<< HEAD
+=======
+				width: 100%
+>>>>>>> master
 				opacity: 1
 				position: absolute
 				opacity: 0
@@ -390,6 +585,20 @@ section#ui
 				&::before,
 				&::after
 					display: none
+<<<<<<< HEAD
+=======
+				a
+					top: 12px
+		.sub span, .sub br
+			display: none
+
+@media (max-width: 375px) // iPhone SE
+	section#ui
+		.animation-wrapper
+			top: 0
+		.item.selected
+			top: -26px
+>>>>>>> master
 
 // ============================================================
 // UX Section
@@ -524,11 +733,17 @@ section#graphic
 		justify-content: center
 		padding: 20px 3vw
 		gap: 10px
+<<<<<<< HEAD
 		img
 			display: block
 			min-width: 150px
 			width: 40%
 			height: auto
+=======
+		.img-bundle
+			min-width: 150px
+			width: 40%
+>>>>>>> master
 
 		.card
 			position: absolute
@@ -548,11 +763,17 @@ section#graphic
 			align-items: center
 			padding: 20px 3vw
 			gap: 20px
+<<<<<<< HEAD
 			img
 				display: block
 				min-width: 120px
 				width: 30%
 				height: auto
+=======
+			.img-bundle
+				min-width: 120px
+				width: 30%
+>>>>>>> master
 				aspect-ratio: 1 / 1
 
 		.card-2 // 第三張展示卡
@@ -560,9 +781,20 @@ section#graphic
 			height: 90vh
 			background-color: #2E3D4B
 			z-index: 3
+<<<<<<< HEAD
 			img
 				width: 100%
 
+=======
+			.img-bundle
+				width: 100%
+
+@media (max-width: 820px) // iPad Air
+	section#graphic
+		.animation-wrapper
+			width: 200px
+
+>>>>>>> master
 @media (max-width: 440px)
 	section#graphic
 		grid-template-columns: 1fr
@@ -574,14 +806,22 @@ section#graphic
 			right: 0vw
 			width: 94vw
 			height: 76vh
+<<<<<<< HEAD
 			img
+=======
+			.img-bundle
+>>>>>>> master
 				min-width: 60px
 
 			.card-1
 				width: 91vw
 				height: 76vh
 				padding: 20px 6vw
+<<<<<<< HEAD
 				img
+=======
+				.img-bundle
+>>>>>>> master
 					width: 45%
 
 			.card-2
@@ -684,6 +924,7 @@ section#logo
 			transform: scale(1)
 			transition: all 0.5s
 
+<<<<<<< HEAD
 
 @media (max-width: 440px)
 	section#logo
@@ -702,6 +943,13 @@ section#logo
 
 		.section_title p
 				font-size: 20px
+=======
+@media (max-width: 820px) // iPad Air
+	section#logo
+		.section_title p 
+			font-size: 20px
+			top: 24px
+>>>>>>> master
 
 		.logo img
 			max-width: 60%
@@ -743,6 +991,31 @@ section#logo
 				img
 					transform: scale(0.7)
 
+<<<<<<< HEAD
+=======
+@media (max-width: 440px)
+	section#logo
+		.grid-container
+			padding-top: 8vh
+			grid-template-columns: 1fr 3vw 1fr
+			grid-template-rows: 16vh repeat(3, 3vh 1fr)
+
+		.grid-item:first-child
+			grid-column: 1 / -1
+			padding: 0 12px
+
+		.animation-wrapper
+			width: 35%
+			margin-top: 0
+
+@media (max-width: 375px) // iPhone SE
+	section#logo
+		.section_title p 
+			font-size: 18px
+			top: -6px
+			line-height: 120%
+
+>>>>>>> master
 // ============================================================
 // About Section
 // ============================================================
@@ -807,6 +1080,18 @@ section#about
 		.logo
 			justify-content: start
 
+<<<<<<< HEAD
+=======
+@media (max-width: 375px) // iPhone SE
+	section#about
+		p.name
+			font-size: 26px
+			& ~ p
+				font-size: 18px
+		p.fin
+			font-size: 32px
+
+>>>>>>> master
 // ============================================================
 // Footer
 // ============================================================
@@ -832,9 +1117,15 @@ footer
 		display: block
 		&::after // 懶得改圖，加大白色範圍
 			content: ''
+<<<<<<< HEAD
 			width: 40px
 			height: 40px
 			border-radius: 20px
+=======
+			width: 46px
+			height: 46px
+			border-radius: 23px
+>>>>>>> master
 			background-color: white
 			position: absolute
 			left: 50%
@@ -850,7 +1141,18 @@ footer
 		padding: 40px 6vw 20px
 		flex-direction: column-reverse
 		align-items: center
+<<<<<<< HEAD
 		gap: 20px
 		p
 			font-size: 14px
 
+=======
+		gap: 40px
+		p
+			font-size: 14px
+
+@media (max-width: 375px) // iPhone SE
+	footer p
+		font-size: 12px
+
+>>>>>>> master

@@ -20,14 +20,23 @@ html(lang="en")
     meta(property="og:description" content="Designer with 10+ years bridging UI/UX, branding, and marketing.")
     meta(property="og:type" content="website")
     meta(property="og:url" content="https://kollin-design.com")
+<<<<<<< HEAD
     meta(property="og:image" content="https://kollin-design.com/og-image.jpg")
     //- og-image: 1200x630px 補圖
+=======
+    meta(property="og:image" content="https://kollin-design.com/img/meta/og-image.png")
+    //- og-image: 1200x630px
+>>>>>>> master
 
     //- Twitter Card
     meta(name="twitter:card" content="summary_large_image")
     meta(name="twitter:title" content="Kollin Jhang | UI/UX Designer Portfolio")
     meta(name="twitter:description" content="Designer with 10+ years bridging UI/UX, branding, and marketing.")
+<<<<<<< HEAD
     meta(name="twitter:image" content="https://kollin-design.com/og-image.jpg")
+=======
+    meta(name="twitter:image" content="https://kollin-design.com/img/meta/og-image.png")
+>>>>>>> master
     
     //- JSON-LD
     script(type="application/ld+json").
@@ -49,6 +58,7 @@ html(lang="en")
         ]
       }
 
+<<<<<<< HEAD
     link(rel="stylesheet" href="../css/style.css")
     link(rel="canonical" href="https://kollin-design.com")
 
@@ -58,6 +68,45 @@ html(lang="en")
       nav#navbar
         a(href="#hero").logo
           img(src='../img/logo.svg' width='100%' height='32px' alt='logo')
+=======
+    link(rel="preconnect", href="https://fonts.googleapis.com")
+    link(rel="preconnect", href="https://fonts.gstatic.com", crossorigin)
+    link(href="https://fonts.googleapis.com/css2?family=Sorts+Mill+Goudy:ital@0;1&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap", rel="stylesheet")
+        
+    link(rel='preload' href="../css/style.css" as='style')
+    link(rel='stylesheet' href='../css/style.css')
+    link(rel="canonical" href="https://kollin-design.com")
+
+    // Google Tag Manager
+    script.
+      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-N3LRZRBR');
+    // End Google Tag Manager
+
+  body
+
+    // Google Tag Manager (noscript)
+    noscript
+      iframe(src='https://www.googletagmanager.com/ns.html?id=GTM-N3LRZRBR' height='0' width='0' style='display:none;visibility:hidden')
+    // End Google Tag Manager (noscript)
+
+    //- ========================================================
+    //- Mixin
+    //- ========================================================
+    include ./_text_draw_outline.pug
+    include ./_responsive_img.pug
+
+    //- ========================================================
+    //- Navigation
+    //- ========================================================
+    header
+      nav#navbar
+        a(href="#hero").logo
+          img(src='../img/logo.svg' width='auto' height='32px' alt='logo')
+>>>>>>> master
         ul
           li
             a.arflex-btn(href='#ui' data-text='Portfolio')
@@ -66,9 +115,15 @@ html(lang="en")
           li
             a.arflex-btn(href='#about' data-text='About')
           li
+<<<<<<< HEAD
             a.arflex-btn(href='mailto:tonlow0@gmail.com' data-text='Contact' data-icon='true')
         .nav-button.m-only
           img(src='../img/icon/dehaze.svg' width='32px' hieght='32px')
+=======
+            a#open-contact.arflex-btn(href='javascript:void(0)' data-text='Contact' data-icon='true')
+        .nav-button
+          img(src='../img/icon/dehaze.svg' width='32px' height='32px' alt='menu')
+>>>>>>> master
 
     main
       //- ========================================================
@@ -81,6 +136,7 @@ html(lang="en")
 
         p.tips Scroll down
 
+<<<<<<< HEAD
         //- 背景大logo：無限循環線
         .big-logo
           svg.animated-svg(xmlns='http://www.w3.org/2000/svg' width='495' height='924' viewBox='0 0 496 925')
@@ -116,6 +172,15 @@ html(lang="en")
             path.st0.draw-path-single(d='M14.63 924.5c124.99-13.68 225.26-212.67 233.37-462S356.38 14.18 481.37.5')
 
         //- 背景滑動點點牆
+=======
+        //- 背景動畫logo：無限循環 + 單次襯底
+        .big-logo
+          include ./_hero-bg-infinite.pug
+        .big-logo
+          include ./_hero-bg-single.pug
+
+        //- 背景點點滑動牆
+>>>>>>> master
         canvas#dotCanvas
 
       //- ========================================================
@@ -134,6 +199,7 @@ html(lang="en")
             .gallery_menu
               .item
                 p AIGC website
+<<<<<<< HEAD
                 p.sub Role: 
                   br
                   | UI/UX Design, Frontend Development, Data Analysis
@@ -152,11 +218,36 @@ html(lang="en")
                 p.sub Role:
                   br
                   | UI/UX Design, Frontend Development
+=======
+                p.sub UI/UX Design, Frontend Development, Data Analysis
+                a(href='https://www.figma.com/proto/3daBwgTus0Mrevbjaw6ImD/Backup?node-id=9914-5436&t=GgdjTYbklcDIGUZ9-1&scaling=min-zoom&content-scaling=fixed&page-id=9914%3A3510' target='_blank')
+                  img(src='../img/icon/down_arrow.svg' width='12px' height='12px')
+                  img(src='../img/icon/figma.svg' width='18px' height='18px' alt='Figma link')
+              .item
+                p API website
+                p.sub UI/UX Design, Frontend Development, Project Manager
+                a(href='https://www.figma.com/proto/3daBwgTus0Mrevbjaw6ImD/Backup?node-id=9914-5100&t=9LzI4oHZdba7QgXU-1&scaling=min-zoom&content-scaling=fixed&page-id=9914%3A3510' target='_blank')
+                  img(src='../img/icon/down_arrow.svg' width='12px' height='12px')
+                  img(src='../img/icon/figma.svg' width='18px' height='18px' alt='Figma link')
+              .item
+                p CDN platform
+                p.sub UI/UX Design
+                a(href='https://www.figma.com/proto/3daBwgTus0Mrevbjaw6ImD/Backup?node-id=9914-7925&t=yMRHRQTbg8O7SQr9-1&scaling=min-zoom&content-scaling=fixed&page-id=9914%3A3510' target='_blank')
+                  img(src='../img/icon/down_arrow.svg' width='12px' height='12px')
+                  img(src='../img/icon/figma.svg' width='18px' height='18px' alt='Figma link')
+              .item
+                p Ad platform
+                p.sub UI/UX Design, Frontend Development
+                a(href='https://www.figma.com/proto/3daBwgTus0Mrevbjaw6ImD/Backup?node-id=9914-7189&t=2FFQII3vDjIauVcU-1&scaling=min-zoom&content-scaling=fixed&page-id=9914%3A3510' target='_blank')
+                  img(src='../img/icon/down_arrow.svg' width='12px' height='12px')
+                  img(src='../img/icon/figma.svg' width='18px' height='18px' alt='Figma link')
+>>>>>>> master
 
           .grid-item
           .grid-item.item-gallery
             .gallery
               .img-wrapper
+<<<<<<< HEAD
                 img(src='../img/ui_project/ui-screen-1.png' width='100%' height='auto' alt='selected work' data-index='0')
               .img-wrapper
                 img(src='../img/ui_project/ui-screen-2.png' width='100%' height='auto' alt='selected work' data-index='1')
@@ -164,6 +255,18 @@ html(lang="en")
                 img(src='../img/ui_project/ui-screen-3.png' width='100%' height='auto' alt='selected work' data-index='2')
               .img-wrapper
                 img(src='../img/ui_project/ui-screen-4.png' width='100%' height='auto' alt='selected work' data-index='3')
+=======
+                +responsive_img('ui_project/ui-screen-1', 'AIGC Project', '0')
+                
+              .img-wrapper
+                +responsive_img('ui_project/ui-screen-2', 'API Design', '1')
+
+              .img-wrapper
+                +responsive_img('ui_project/ui-screen-3', 'CDN platform', '2')
+
+              .img-wrapper
+                +responsive_img('ui_project/ui-screen-4', 'AD platform', '3')
+>>>>>>> master
 
         //- 線條層
         svg.grid-layout-lines(viewBox="0 0 100 100" preserveAspectRatio="none")
@@ -202,16 +305,22 @@ html(lang="en")
             .tools
               img(src='../img/ux_tool/logo_ga.png' width='auto' height='34px' alt='Google Analytics')
               img(src='../img/ux_tool/logo_gtm.png' width='auto' height='34px' alt='Google Tag Manager')
+<<<<<<< HEAD
               //- img(src='../img/ux_tool/logo_gsc.png' width='auto' height='34px' alt='Google Search Console')
+=======
+>>>>>>> master
               img(src='../img/ux_tool/logo_gt.png' width='auto' height='34px' alt='Google Trends')
               img(src='../img/ux_tool/logo_hotjar.png' width='auto' height='34px' alt='Hotjar')
               img(src='../img/ux_tool/logo_hubspot.png' width='auto' height='34px' alt='Hubspot')
               img(src='../img/ux_tool/logo_similarweb.png' width='auto' height='34px' alt='Similarweb')
               img(src='../img/ux_tool/logo_supabase.png' width='auto' height='34px' alt='Supabase')
             .performance
+<<<<<<< HEAD
               //- .data(data-target="10")
               //-   p.number 0
               //-   p Company
+=======
+>>>>>>> master
               .data(data-target="1360590")
                 p.number 0
                 p Users
@@ -228,6 +337,7 @@ html(lang="en")
               +text_draw_outline('Graphic design', 'title_graphic')
           .grid-item
           .grid-item.gallery-wrapper
+<<<<<<< HEAD
             img(src="../img/graphic_project/project_1-1.png" alt='gallery works')
             img(src="../img/graphic_project/project_1-2.png" alt='gallery works')
             img(src="../img/graphic_project/project_1-3.png" alt='gallery works')
@@ -247,6 +357,26 @@ html(lang="en")
             .card.card-2
               img(src="../img/graphic_project/project_3-1.png" alt='gallery works')
 
+=======
+            +responsive_img('graphic_project/project_1-1', 'gallery works', '0')
+            +responsive_img('graphic_project/project_1-2', 'gallery works', '1')
+            +responsive_img('graphic_project/project_1-3', 'gallery works', '2')
+            +responsive_img('graphic_project/project_1-4', 'gallery works', '3')
+
+            .card.card-1
+              +responsive_img('graphic_project/project_2-1', 'gallery works', '0')
+              +responsive_img('graphic_project/project_2-2', 'gallery works', '1')
+              +responsive_img('graphic_project/project_2-3', 'gallery works', '2')
+              +responsive_img('graphic_project/project_2-4', 'gallery works', '3')
+              +responsive_img('graphic_project/project_2-5', 'gallery works', '4')
+              +responsive_img('graphic_project/project_2-6', 'gallery works', '5')
+              +responsive_img('graphic_project/project_2-7', 'gallery works', '6').m-hide
+              +responsive_img('graphic_project/project_2-8', 'gallery works', '7').m-hide
+              +responsive_img('graphic_project/project_2-9', 'gallery works', '8').m-hide
+
+            .card.card-2
+              +responsive_img('graphic_project/project_3-1', 'gallery works', '0')
+>>>>>>> master
               
         //- 線條層
         svg.grid-layout-lines(viewBox="0 0 100 100" preserveAspectRatio="none")
@@ -293,17 +423,29 @@ html(lang="en")
           //- row 2
           .grid-item(data='logo')
             .logo
+<<<<<<< HEAD
               img(src='../img/logo_project/logo_starryck.png' width='auto' hieght='auto' alt='Starryck')
           .grid-item
           .grid-item(data='logo')
             .logo
               img(src='../img/logo_project/logo_ride_free.png' width='auto' hieght='auto' alt='Ride Free')
+=======
+              img(src='../img/logo_project/logo_starryck.png' width='auto' height='auto' alt='Starryck')
+          .grid-item
+          .grid-item(data='logo')
+            .logo
+              img(src='../img/logo_project/logo_ride_free.png' width='auto' height='auto' alt='Ride Free')
+>>>>>>> master
           .grid-item
           .grid-item.m-only
           .grid-item.m-only
           .grid-item(data='logo')
             .logo
+<<<<<<< HEAD
               img(src='../img/logo_project/logo_ag_pizza.png' width='auto' hieght='auto' alt='AG Pizza')
+=======
+              img(src='../img/logo_project/logo_ag_pizza.png' width='auto' height='auto' alt='AG Pizza')
+>>>>>>> master
 
           //- gap row
           .grid-item.m-hide
@@ -315,17 +457,29 @@ html(lang="en")
           //- row 3
           .grid-item(data='logo')
             .logo
+<<<<<<< HEAD
               img(src='../img/logo_project/logo_mlytics.png' width='auto' hieght='auto' alt='Mlytics')
+=======
+              img(src='../img/logo_project/logo_mlytics.png' width='auto' height='auto' alt='Mlytics')
+>>>>>>> master
           .grid-item
           .grid-item.m-only
           .grid-item.m-only
           .grid-item(data='logo')
             .logo
+<<<<<<< HEAD
               img(src='../img/logo_project/logo_za.png' width='auto' hieght='auto' alt='Za')
           .grid-item
           .grid-item(data='logo')
             .logo
               img(src='../img/logo_project/logo_edicius.png' width='auto' hieght='auto' alt='Edicius')
+=======
+              img(src='../img/logo_project/logo_za.png' width='auto' height='auto' alt='Za')
+          .grid-item
+          .grid-item(data='logo')
+            .logo
+              img(src='../img/logo_project/logo_edicius.png' width='auto' height='auto' alt='Edicius')
+>>>>>>> master
 
         //- 線條層
         svg.grid-layout-lines(viewBox="0 0 100 100" preserveAspectRatio="none")
@@ -383,7 +537,11 @@ html(lang="en")
           //- row 2
           .grid-item
             .logo
+<<<<<<< HEAD
               img(src='../img/logo.svg' width='180px' hieght='auto' alt='Logo')
+=======
+              img(src='../img/logo.svg' width='180px' height='auto' alt='Logo')
+>>>>>>> master
           .grid-item
           .grid-item
             p.name Kollin Jhang
@@ -428,6 +586,11 @@ html(lang="en")
           line.line-h(x1="0" y1="72%" x2="100%" y2="72%").m-only
           line.line-h(x1="0" y1="75%" x2="100%" y2="75%").m-only
 
+<<<<<<< HEAD
+=======
+      include ./_form.pug
+
+>>>>>>> master
     //- ========================================================
     //- Footer
     //- ========================================================
@@ -435,15 +598,26 @@ html(lang="en")
       p Designed by Kollin Jhang © 2026 All rights reserved.
       .social-links
         a(href="https://www.linkedin.com/in/kollin-jhang-6737a8173" target='_blank')
+<<<<<<< HEAD
           img(src='../img/icon/linkedin.svg' width='24px' hieght='24px' alt='linkedin')
+=======
+          img(src='../img/icon/linkedin.svg' width='24px' height='24px' alt='linkedin')
+>>>>>>> master
 
     //- ========================================================
     //- JS
     //- ========================================================
     //- Animation plugin
+<<<<<<< HEAD
     script(src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js")
     script(src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js")
     script(src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollToPlugin.min.js")
     script(src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js")
+=======
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer)
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer)
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollToPlugin.min.js" defer)
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer)
+>>>>>>> master
 
     script(src="../js/main.js" defer)
