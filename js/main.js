@@ -440,108 +440,112 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // ===================================================
-// UI 作品圖片滾動切換邏輯
+// UI 作品圖片滾動切換邏輯 純滾動版
 // ===================================================
 
-/**
- * 互動設計：UI 區塊長圖捲動 (含 Class 動態切換)
- */
-const initPortfolioScroll = () => {
-    gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(ScrollTrigger);
 
-    const uiSection = document.querySelector('section#ui');
-    if (!uiSection) return;
+const uiSection = document.querySelector('#ui');
+const menuItems = document.querySelectorAll('.gallery_menu .item');
+const imgWrappers = document.querySelectorAll('.gallery .img-wrapper');
 
-    const items = uiSection.querySelectorAll('.gallery_menu .item');
-    const wrappers = uiSection.querySelectorAll('.gallery .img-wrapper');
-    const images = uiSection.querySelectorAll('.gallery img');
+// --- 預設狀態 ---
+function setActive(index) {
+  menuItems.forEach((item, i) => {
+    item.classList.toggle('selected', i === index);
+  });
+  imgWrappers.forEach((img, i) => {
+    img.classList.toggle('show', i === index);
+  });
+}
 
-    // 確保圖片完全載入後才計算高度
-    const loadImagePromises = Array.from(images).map(img => {
-        if (img.complete) return Promise.resolve();
-        return new Promise(resolve => {
-            img.onload = resolve;
-            img.onerror = resolve;
-        });
-    });
+// --- 核心捲動邏輯 ---
+const tl = gsap.timeline({
+  scrollTrigger: {
+    trigger: uiSection,
+    start: "top top",         // 當 section 頂部碰到視窗頂部
+    end: "+=3000",            // 決定滾動多久才切換完 4 個項目（可依手感調整）
+    pin: true,                // 釘住整個 section
+    scrub: 0.5,               // 讓切換跟隨手指滾動的速度，0.5 帶點平滑感
+    onUpdate: (self) => {
+      // 依據捲動進度 (0~1) 計算 Index
+      // 0~0.25 為第一個, 0.25~0.5 為第二個...以此類推
+      const progress = self.progress;
+      const total = menuItems.length;
+      const index = Math.min(Math.floor(progress * total), total - 1);
+      
+      setActive(index);
+    }
+  }
+});
 
-    Promise.all(loadImagePromises).then(() => {
-        createScrollTimeline(uiSection, items, wrappers);
-    });
-};
+// --- 需求 1：進入視窗 20% 處先加載第一個 selected ---
+ScrollTrigger.create({
+  trigger: uiSection,
+  start: "top 80%", // 視窗底部算上來 20% (即 top 80%)
+  onEnter: () => setActive(0),
+  onLeaveBack: () => {
+    // 往回滑出視窗時可以移除 selected，保持乾淨
+    menuItems.forEach(item => item.classList.remove('selected'));
+  }
+});
 
-const createScrollTimeline = (uiSection, items, wrappers) => {
-    // 輔助函式：切換 Class (這會解決你 .selected 移動的問題)
-    const updateMenuClass = (index) => {
-        items.forEach((item, i) => {
-            item.classList.toggle('selected', i === index);
-        });
-    };
+// ===================================================
+// UI 作品圖片滾動切換邏輯 滾動加點擊版 *閃跳待修
+// ===================================================
 
-    // 1. 初始化狀態
-    // 將所有圖片隱藏，除了第一張
-    gsap.set(wrappers, { opacity: 0, visibility: 'hidden' });
-    gsap.set(wrappers[0], { opacity: 1, visibility: 'visible', y: 0 });
+// gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
+
+// const uiSection = document.querySelector('#ui');
+// const menuItems = document.querySelectorAll('.gallery_menu .item');
+// const imgWrappers = document.querySelectorAll('.gallery .img-wrapper');
+
+// // 1. 封裝切換函式
+// function goToSection(index) {
+//   // 切換選單
+//   menuItems.forEach((item, i) => item.classList.toggle('selected', i === index));
+//   // 切換圖片
+//   imgWrappers.forEach((img, i) => img.classList.toggle('show', i === index));
+// }
+
+// // 2. 建立主 Pin 效果
+// ScrollTrigger.create({
+//   trigger: uiSection,
+//   start: "top top",
+//   end: "+=3000", // 總滾動距離
+//   pin: true,
+//   scrub: true
+// });
+
+// // 3. 建立 4 個子區間來觸發 class 切換
+// menuItems.forEach((item, index) => {
+//   ScrollTrigger.create({
+//     trigger: uiSection,
+//     // 將 3000px 的總距離平均分配
+//     start: () => `top+=${(3000 / menuItems.length) * index} top`,
+//     end: () => `top+=${(3000 / menuItems.length) * (index + 1)} top`,
     
-    // 初始化第一個項目的 Class (不需要在 Pug 寫死)
-    updateMenuClass(0);
-    gsap.set(items[0], { opacity: 1 });
-
-    const tl = gsap.timeline({
-        scrollTrigger: {
-            trigger: uiSection,
-            start: "top top",
-            end: "+=12000",
-            pin: true,
-            scrub: 1,
-            invalidateOnRefresh: true,
-            // pinSpacing: false,
-            anticipatePin: 1
-        }
-    });
-
-    wrappers.forEach((wrapper, index) => {
-        // --- A. 處理圖片進入與選單同步 ---
-        if (index > 0) {
-            const enterLabel = `enter_${index}`;
-            tl.add(enterLabel);
-            
-            // 前一張淡出
-            tl.to(wrappers[index - 1], { opacity: 0, autoAlpha: 0, duration: 1 }, enterLabel);
-            tl.to(items[index - 1], { opacity: 0.15, duration: 1 }, enterLabel);
-            
-            // 這一張淡入
-            tl.to(wrapper, { opacity: 1, autoAlpha: 1, duration: 1 }, enterLabel);
-            tl.to(items[index], { 
-                opacity: 1, 
-                duration: 1,
-                onStart: () => updateMenuClass(index),
-                onReverseComplete: () => updateMenuClass(index - 1)
-            }, enterLabel);
-        }
-
-        // --- B. 處理長圖捲動 (維持原邏輯) ---
-        const scrollDistance = wrapper.scrollHeight - uiSection.offsetHeight;
-        if (scrollDistance > 0) {
-            tl.to(wrapper, {
-                y: -(scrollDistance + 2), 
-                duration: 8, 
-                ease: "none"
-            });
-        }
-
-        // --- C. 關鍵頓點：底部停留機制 ---
-        tl.to({}, { duration: 3 }); 
-
-        // --- D. 準備切換的緩衝 ---
-        if (index < wrappers.length - 1) {
-            tl.to({}, { duration: 1 });
-        }
-    });
-};
-
-window.addEventListener('load', initPortfolioScroll);
-
+//     // 當滾動進入此區間
+//     onToggle: self => {
+//       if (self.isActive) {
+//         goToSection(index);
+//       }
+//     },
+    
+//     // 解決點擊衝突：點擊時捲動到該區間的起始位置
+//     onRefresh: self => {
+//       item.onclick = (e) => {
+//         e.preventDefault();
+//         gsap.to(window, {
+//           duration: 0.8,
+//           scrollTo: self.start + 2, // 加 2 像素確保觸發在區間內
+//           ease: "power2.inOut",
+//           overwrite: "auto" // 重要：覆蓋掉正在進行的捲動
+//         });
+//       };
+//     }
+//   });
+// });
 
 // ===================================================
 // Graphic 卡片滑入進場
