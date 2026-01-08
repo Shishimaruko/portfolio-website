@@ -595,10 +595,16 @@ section#ui .gallery_menu {
     section#ui .gallery_menu .item p {
       font-size: 30px; }
     section#ui .gallery_menu .item .sub {
-      font-size: 16px;
+      font-size: 14px;
       line-height: 110%;
       font-style: italic;
       font-weight: 300;
+      opacity: 0; }
+    section#ui .gallery_menu .item .intro {
+      font-size: 18px;
+      font-weight: 400;
+      margin-top: 8px;
+      line-height: 120%;
       opacity: 0; }
     section#ui .gallery_menu .item a {
       position: absolute;
@@ -640,6 +646,8 @@ section#ui .gallery_menu {
         top: 12px; }
       section#ui .gallery_menu .item.selected .sub {
         opacity: 0.5; }
+      section#ui .gallery_menu .item.selected .intro {
+        opacity: 0.8; }
       section#ui .gallery_menu .item.selected a {
         visibility: visible; }
 
@@ -683,6 +691,7 @@ section#ui .gallery {
     grid-column: auto;
     grid-row: auto; }
   section#ui .animation-wrapper {
+    max-width: 100%;
     width: 70%;
     height: 100px;
     top: 12px; }
@@ -696,7 +705,8 @@ section#ui .gallery {
       opacity: 0;
       padding-top: 4px; }
       section#ui .gallery_menu .item.selected {
-        background-color: #EEF3F8; }
+        background-color: #EEF3F8;
+        top: 12px; }
       section#ui .gallery_menu .item::before, section#ui .gallery_menu .item::after {
         display: none; }
       section#ui .gallery_menu .item a {
@@ -707,8 +717,10 @@ section#ui .gallery {
 @media (max-width: 375px) {
   section#ui .animation-wrapper {
     top: 0; }
-  section#ui .item.selected {
-    top: -26px; } }
+  section#ui .gallery_menu .item.selected {
+    top: -16px; }
+    section#ui .gallery_menu .item.selected .sub {
+      display: none; } }
 
 section#ux {
   background-color: black;
@@ -770,15 +782,23 @@ section#ux {
   section#ux .data {
     margin-top: 60px; }
     section#ux .data p {
-      font-size: 36px;
+      font-size: 48px;
       text-align: right;
       color: white; }
-      section#ux .data p:last-of-type {
-        font-family: 'Sorts Mill Goudy', serif; }
     section#ux .data .number {
-      font-size: 120px;
-      line-height: 100px;
+      font-size: 160px;
+      line-height: 120px;
       font-weight: 100; }
+    section#ux .data .footnote {
+      font-size: 16px;
+      font-style: italic;
+      font-family: 'Sorts Mill Goudy', serif; }
+    section#ux .data .extra {
+      font-size: 24px;
+      margin-top: 30px;
+      font-weight: 300; }
+      section#ux .data .extra span {
+        font-size: 32px; }
 
 #particle-section {
   width: 100%;
@@ -810,11 +830,20 @@ section#ux {
     -ms-flex-align: center;
     align-items: center;
     gap: 100px; }
-  section#ux .data p {
-    text-align: center;
-    margin-top: 20px; }
-    section#ux .data p.number {
-      font-size: 140px; }
+  section#ux .data {
+    margin-top: 0; }
+    section#ux .data p {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 32px;
+      margin-top: 4px; }
+      section#ux .data p.number {
+        font-size: 120px; }
+      section#ux .data p.footnote {
+        font-size: 12px; }
+      section#ux .data p.extra {
+        font-size: 20px;
+        margin-top: 4px; }
   section#ux .tools {
     width: 100%;
     gap: 12px 16px; }
@@ -1075,7 +1104,9 @@ section#logo .logo {
     padding: 0 12px; }
   section#logo .animation-wrapper {
     width: 35%;
-    margin-top: 0; } }
+    margin-top: 0; }
+  section#logo .section_title p {
+    top: 6px; } }
 
 @media (max-width: 375px) {
   section#logo .section_title p {
@@ -1139,7 +1170,8 @@ section#about .logo {
     width: 45%;
     margin-top: 0; }
   section#about p {
-    font-size: 20px; }
+    font-size: 18px;
+    line-height: 150%; }
     section#about p.name {
       font-size: 30px; }
     section#about p.fin {
@@ -1153,7 +1185,8 @@ section#about .logo {
   section#about p.name {
     font-size: 26px; }
     section#about p.name ~ p {
-      font-size: 18px; }
+      font-size: 18px;
+      line-height: 140%; }
   section#about p.fin {
     font-size: 32px; } }
 
