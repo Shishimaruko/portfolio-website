@@ -161,7 +161,7 @@
   padding: 0;
   font-family: 'Source Sans 3', sans-serif; }
 
-a {
+a, button {
   font-family: 'Sorts Mill Goudy', serif;
   color: #04161D;
   text-decoration: none; }
@@ -300,7 +300,13 @@ nav {
     gap: 60px; }
   nav li {
     list-style: none;
-    font-size: 20px; }
+    font-size: 20px;
+    font-weight: 300; }
+  nav button {
+    font-size: 18px;
+    font-weight: 300;
+    border: none;
+    background-color: transparent; }
 
 @media (min-width: 769px) {
   .nav-hidden {
