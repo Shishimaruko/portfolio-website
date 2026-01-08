@@ -34,6 +34,38 @@ navElement.addEventListener('click', (e) => {
 });
 
 // ====================================================
+// 淡入模組
+// ====================================================
+
+// 頁面初始化動畫函式
+function initEntryAnimations() {
+  const fadeElements = document.querySelectorAll('[data-fade]');
+
+  fadeElements.forEach((el) => {
+    // 讀取屬性，若沒設定則使用預設值
+    const effect = el.dataset.fade; // 'in' or 'up'
+    const delay = parseFloat(el.dataset.delay) || 0; // 時間差 (預設 0)
+    const duration = parseFloat(el.dataset.duration) || 0.9; // 進場時長 (預設 0.8s)
+
+    gsap.to(el, {
+      scrollTrigger: {
+        trigger: el,
+        start: "top 90%", // 當元素頂部進入視窗 90% 位置
+        once: true        // 僅觸發一次，避免重複閃爍
+      },
+      opacity: 1,
+      y: 0,
+      duration: duration,
+      delay: delay,
+      ease: "power2.out"
+    });
+  });
+}
+
+// 確保在頁面載入完成後執行
+window.addEventListener('load', initEntryAnimations);
+
+// ====================================================
 // Button hover 字母跳動
 // ====================================================
 
