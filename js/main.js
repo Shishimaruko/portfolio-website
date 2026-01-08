@@ -1,5 +1,5 @@
 // ====================================================
-// 在頁面載入時強制置頂
+// 重整頁面強制置頂
 // ====================================================
 
 window.scrollTo(0, 0);
@@ -34,7 +34,7 @@ navElement.addEventListener('click', (e) => {
 });
 
 // ====================================================
-// 淡入模組
+// 元件淡入模組
 // ====================================================
 
 // 頁面初始化動畫函式
@@ -66,7 +66,7 @@ function initEntryAnimations() {
 window.addEventListener('load', initEntryAnimations);
 
 // ====================================================
-// Button hover 字母跳動
+// 文字字母 hover 跳動
 // ====================================================
 
 document.querySelectorAll('.arflex-btn').forEach(btn => {
@@ -122,7 +122,7 @@ window.addEventListener('scroll', function() {
 });
 
 // ====================================================
-// Hero 動態背景
+// Hero 點點交錯動態背景
 // ====================================================
 
 const heroCanvas = document.getElementById('dotCanvas');
@@ -164,7 +164,7 @@ if (heroCanvas) {
 }
 
 // ===================================================
-// UX 旋轉粒子背景
+// 中心旋轉粒子背景
 // ===================================================
 
 const PARTICLE_CONFIG = {
@@ -294,7 +294,7 @@ initParticles();
 animateParticles();
 
 // ===================================================
-// 文字描邊進場動畫
+// 標題描邊填色動畫
 // ===================================================
 
 function initPremiumStrokeText() {
@@ -384,57 +384,7 @@ function initPremiumStrokeText() {
 window.addEventListener('load', initPremiumStrokeText);
 
 // ===================================================
-// 數字碼表
-// ===================================================
-
-// 格式化成 K / M / B
-function formatKMB(value) {
-  if (value >= 1_000_000_000) return (value / 1_000_000_000).toFixed(1).replace(/\.0$/, "") + "B";
-  if (value >= 1_000_000) return (value / 1_000_000).toFixed(1).replace(/\.0$/, "") + "M";
-  if (value >= 1_000) return (value / 1_000).toFixed(1).replace(/\.0$/, "") + "K";
-  return value.toString();
-}
-
-function animateNumber(el, target, duration = 2000) {
-  const start = 0;
-  const startTime = performance.now();
-
-  function update(now) {
-    const progress = Math.min((now - startTime) / duration, 1);
-    const value = Math.floor(progress * (target - start) + start);
-    el.textContent = formatKMB(value);
-
-    if (progress < 1) requestAnimationFrame(update);
-  }
-
-  requestAnimationFrame(update);
-}
-
-// 進入視窗高度 50% 才觸發
-const options = {
-  root: null,
-  threshold: 0.5
-};
-
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      const dataEl = entry.target;
-      const targetValue = Number(dataEl.dataset.target);
-      const numberEl = dataEl.querySelector(".number");
-
-      animateNumber(numberEl, targetValue, 1000);  // 動畫秒數
-
-      observer.unobserve(dataEl); // 只執行一次
-    }
-  });
-}, options);
-
-// 啟用觀察
-document.querySelectorAll(".data").forEach(el => observer.observe(el));
-
-// ===================================================
-// 版面劃線
+// 版面格線動畫
 // ===================================================
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -523,6 +473,45 @@ ScrollTrigger.create({
 });
 
 // ===================================================
+// UI 作品細節說明開關
+// ===================================================
+
+// 等待 DOM 載入
+document.addEventListener('DOMContentLoaded', () => {
+  // 選取所有在 .label 裡面的功能按鈕
+  const detailBtns = document.querySelectorAll("button[data-icon='view']");
+
+  detailBtns.forEach(btn => {
+    btn.addEventListener('click', function(e) {
+      // 防止事件冒泡（如果你外層 .item 也有點擊事件的話）
+      e.stopPropagation();
+
+      // 1. 尋找目前點擊按鈕所屬的那個 .item 容器
+      const parentItem = this.closest('.item');
+      
+      // 2. 找到該容器內的 .details 區塊
+      const details = parentItem.querySelector('.details');
+
+      // 3. 切換 class (如果原本有就移除，沒有就加上)
+      details.classList.toggle('visible');
+      
+      // 4. 按鈕自己也加上 active class (用來改 icon 顏色或背景)
+      this.classList.toggle('is-active');
+      
+      // 選擇性：如果點開一個要關閉其他人的話，可以取消下方註解
+      /*
+      detailBtns.forEach(otherBtn => {
+        if (otherBtn !== btn) {
+          otherBtn.classList.remove('is-active');
+          otherBtn.closest('.item').querySelector('.details').classList.remove('visible');
+        }
+      });
+      */
+    });
+  });
+});
+
+// ===================================================
 // UI 作品圖片滾動切換邏輯 滾動加點擊版 *閃跳待修
 // ===================================================
 
@@ -580,7 +569,7 @@ ScrollTrigger.create({
 // });
 
 // ===================================================
-// Graphic 卡片滑入進場
+// Graphic 卡片滑入進場 *上下兩個都開會造成 GSAP 壞掉
 // =================================================== 
 
 // const initGraphicAnimation = () => {
@@ -620,7 +609,7 @@ ScrollTrigger.create({
 // window.addEventListener('load', initGraphicAnimation);
 
 // ===================================================
-// 送出/開關表單
+// 開關表單、送出表單回饋訊息
 // ===================================================  
 
 window.addEventListener('load', () => {
@@ -633,39 +622,40 @@ window.addEventListener('load', () => {
 
     if (!contactModal || !contactOpenTrigger) return;
 
-    // 輔助函式：安全地更新按鈕文字 (不破壞 GSAP 字母跳動結構)
+    // 輔助函式：保持原有的 GSAP 結構相容
     const updateBtnText = (btn, newText) => {
         const textLayers = btn.querySelectorAll('.text-layer');
         if (textLayers.length > 0) {
-            textLayers.forEach(layer => {
-                // 如果你有用之前的 createTextLayer 函式，這裡也要重新生成字母
-                // 簡單做法：直接更換層內文字
-                layer.innerText = newText;
-            });
+            textLayers.forEach(layer => { layer.innerText = newText; });
         } else {
             btn.innerText = newText;
         }
     };
 
-    // --- 彈窗顯示控制 ---
+    // --- 彈窗顯示控制 (改為 Class 模式) ---
     contactOpenTrigger.addEventListener('click', (e) => {
         e.preventDefault();
-        contactModal.style.display = 'flex';
         // 重置狀態
         contactStatusMsg.style.display = 'none';
         contactSubmitBtn.disabled = false;
         updateBtnText(contactSubmitBtn, "Send Message");
+        
+        // 啟動動畫
+        contactModal.classList.add('is-open');
     });
 
+    const closeModal = () => {
+        contactModal.classList.remove('is-open');
+    };
+
     if (contactCloseTrigger) {
-        contactCloseTrigger.addEventListener('click', () => {
-            contactModal.style.display = 'none';
-        });
+        contactCloseTrigger.addEventListener('click', closeModal);
     }
 
+    // 點擊背景關閉
     window.addEventListener('click', (e) => {
         if (e.target === contactModal) {
-            contactModal.style.display = 'none';
+            closeModal();
         }
     });
 
@@ -681,8 +671,7 @@ window.addEventListener('load', () => {
             updateBtnText(contactSubmitBtn, "Sending...");
 
             const formData = new FormData(contactMainForm);
-            const formObject = Object.fromEntries(formData);
-            const formJson = JSON.stringify(formObject);
+            const formJson = JSON.stringify(Object.fromEntries(formData));
 
             fetch('https://api.web3forms.com/submit', {
                 method: 'POST',
@@ -700,28 +689,22 @@ window.addEventListener('load', () => {
                     contactMainForm.reset();
                     updateBtnText(contactSubmitBtn, "Success!");
                     
-                    setTimeout(() => {
-                        contactModal.style.display = 'none';
-                    }, 2000);
+                    // 成功後延遲關閉
+                    setTimeout(closeModal, 2000);
                 } else {
                     contactStatusMsg.innerHTML = resData.message || "Error occurred.";
                     contactStatusMsg.style.color = "#e74c3c";
                     updateBtnText(contactSubmitBtn, "Try Again");
+                    contactSubmitBtn.disabled = false;
                 }
             })
             .catch(err => {
                 contactStatusMsg.innerHTML = "Connection error!";
                 contactStatusMsg.style.color = "#e74c3c";
                 updateBtnText(contactSubmitBtn, "Error");
-            })
-            .then(() => {
                 contactSubmitBtn.disabled = false;
-                setTimeout(() => {
-                    contactStatusMsg.style.display = "none";
-                }, 5000);
             });
         });
     }
 });
-
 
