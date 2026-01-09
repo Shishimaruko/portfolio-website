@@ -247,7 +247,8 @@ html, body {
   overflow-x: hidden; }
 
 body {
-  background-color: #EEF3F8; }
+  background-color: #EEF3F8;
+  background-color: red; }
 
 section {
   width: 100vw;
