@@ -1,13 +1,12 @@
-#contact-modal.modal-overlay(style='display: none;')
+#contact-modal
   .modal-content
     button#close-contact.close-btn(type='button') &times;
-    
     h3 Contact Me
     
     form#contact-form
       //- Web3Forms 必備隱藏欄位
       input(type='hidden', name='access_key', value='ba4407cf-0200-4d0b-89aa-5de9b396322c')
-      input(type='hidden', name='subject', value='來自作品集的新訊息')
+      input(type='hidden', name='subject', value='Message from DaM')
       
       .form-group
         input(type='text', name='name', placeholder='Name', required)
