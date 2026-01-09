@@ -1,9 +1,9 @@
 mixin responsive_img(path, alt, index)
   .img-bundle&attributes(attributes)
     picture
-      source(srcset=`../img/${path}.webp` type='image/webp')
+      source(srcset=`./img/${path}.webp` type='image/webp')
       img(
-        src=`../img/${path}.png` 
+        src=`./img/${path}.png` 
         alt=alt 
         data-index=index 
         loading='lazy'

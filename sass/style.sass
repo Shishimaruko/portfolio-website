@@ -1,14 +1,7 @@
 // ============================================================
-<<<<<<< HEAD
-// File
-// ============================================================
-
-@import url('https://fonts.googleapis.com/css2?family=Sorts+Mill+Goudy:ital@0;1&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap')
-=======
 // Animation
 // ============================================================
 
->>>>>>> master
 @import 'text_button_animation'
 @import 'text_draw_outline_animation'
 
@@ -16,8 +9,12 @@
 // Variant
 // ============================================================
 
-$gray: #414141
+$bk1: #2E3034
+$bk2: #45494F
+$bk3: #595C61
+$bk4: #9298A2
 $cta: #1D4E6A
+$bgc: #EEF3F8
 
 // ============================================================
 // General
@@ -30,105 +27,16 @@ $cta: #1D4E6A
 	padding: 0
 	font-family: 'Source Sans 3', sans-serif
 
-a
+a, button
 	font-family: 'Sorts Mill Goudy', serif
-	color: #04161D
+	color: $bk1
 	text-decoration: none
 
-// ============================================================
-<<<<<<< HEAD
-=======
-// Form
-// ============================================================
-
-#contact-modal
-	h3
-		font-family: 'Sorts Mill Goudy', serif
-		font-size: 32px
-		text-align: center
-		margin-bottom: 28px
-
-	input,
-	textarea,
-	#submit-btn
-		font-family: 'Source Sans 3', sans-serif
-		font-size: 18px
-		font-weight: 300
-		width: 100%
-		padding: 8px 12px
-		border: 1px solid rgba($gray, 0.4)
-		&:focus
-			border-color: $cta
-
-	#submit-btn
-		background-color: $cta
-		padding: 16px
-		font-size: 22px
-		border: none
-		border-radius: 4px
-		color: white
-		font-weight: 500
-		&:disabled
-			opacity: 0.6
-			cursor: not-allowed
-
-	textarea
-		height: 140px
-		resize: none
-
-	#result
-		font-size: 18px
-		margin-top: 15px
-		padding: 10px
-		border-radius: 4px
-		text-align: center
-		transition: all 0.3s ease
-
-.modal-content
-	background: white
-	padding: 40px
-	border-radius: 12px
-	position: relative
-	width: 90%
-	max-width: 500px
-
-#contact-form
-	display: flex
-	flex-direction: column
-	gap: 20px
-
-.modal-overlay
-	position: fixed
-	top: 0
-	left: 0
-	width: 100%
-	height: 100%
-	background: rgba(0, 0, 0, 0.2)
-
-	display: flex
-	align-items: center
-	justify-content: center
-	z-index: 1000
-	backdrop-filter: blur(5px)
-
-.close-btn
-	position: absolute
-	top: 0px
-	right: 15px
-	font-size: 40px
-	font-weight: 200
+button
 	border: none
-	background: none
-	cursor: pointer
-	color: #333
-	opacity: 0.4
-
-@media (max-width: 440px)
-	.modal-content
-		padding: 24px
+	background-color: transparent
 
 // ============================================================
->>>>>>> master
 // Navigation
 // ============================================================
 
@@ -151,27 +59,20 @@ nav
 		display: flex
 		transition: all 0.5s 0.2s ease-in-out
 		gap: 60px
-	li
+	li, button
 		list-style: none
 		font-size: 20px
-
-<<<<<<< HEAD
-@media (min-width: 441px)
-=======
+		font-weight: 300
+	
 @media (min-width: 769px)
->>>>>>> master
 	.nav-hidden
 		transform: translateY(-100%)
 		opacity: 0
 
-<<<<<<< HEAD
-@media (max-width: 440px)
-=======
 	.nav-button
 		display: none
 
 @media (max-width: 768px)
->>>>>>> master
 	nav
 		padding: 20px
 
@@ -183,18 +84,14 @@ nav
 			top: 80px
 			padding: 40px
 			z-index: 1000
-			background-color: #E1EAF2
+			background-color: $bgc
 			flex-direction: column
 			transition: all 0.5s
-			box-shadow: -10px 5px 30px rgba(black, 0.15)
+			box-shadow: -10px 5px 30px rgba($bk1, 0.15)
 		&.nav_open ul
-<<<<<<< HEAD
-				left: 0
-=======
 			left: 0
->>>>>>> master
 
-		li
+		li, button
 			font-size: 24px
 
 // ============================================================
@@ -206,11 +103,12 @@ html, body
 	overflow-x: hidden
 
 body
-	background-color: #EEF3F8
+	background-color: $bgc
 
 section
 	width: 100vw
 	height: 100vh
+	overflow: hidden
 
 .container
 	width: 100%
@@ -221,17 +119,35 @@ section
 	top: 0
 	z-index: 1
 
-<<<<<<< HEAD
-=======
 .img-bundle
 	width: 100%
 	height: auto
 
->>>>>>> master
 .section_title
 	width: 50%
 	max-width: 600px
 	z-index: 2 // 壓在隔線上
+
+// ============================================================
+// 元素淡入
+// ============================================================
+
+// 基礎：隱藏狀態
+[data-fade]
+  opacity: 0
+  will-change: transform, opacity
+
+// 下往上淡入的初始位置
+[data-fade="up"]
+  transform: translateY(30px)
+
+// 原地淡入不需要 transform，保持透明即可
+[data-fade="in"]
+  transform: translateY(0)
+
+// ============================================================
+// 字體描線填色
+// ============================================================
 
 // 描線動畫
 .grid-container
@@ -303,17 +219,6 @@ section#hero
 		top: 0
 		z-index: -1
 
-<<<<<<< HEAD
-.big-logo
-	position: absolute
-	top: 0
-	right: 10vw
-	z-index: -1
-	opacity: 0.2
-
-.draw-path-infinite
-	stroke: url(#lineGradient) !important
-=======
 	.big-logo
 		position: absolute
 		top: 0
@@ -321,9 +226,16 @@ section#hero
 		z-index: -1
 		opacity: 0.2
 
+	.fade-out-box
+		width: 100vw
+		height: 100vh
+		position: absolute
+		left: 0
+		top: 0
+		mask-image: linear-gradient(to bottom, black 90%, transparent 100%)
+
 .draw-path-infinite
 	stroke: url(#lineGradient-infinite) !important
->>>>>>> master
 	stroke-width: 2px
 	stroke-linecap: round
 	fill: none
@@ -360,11 +272,7 @@ section#hero
 		opacity: 0
 
 .draw-path-single
-<<<<<<< HEAD
-	stroke: url(#lineGradient) !important
-=======
 	stroke: url(#lineGradient-single) !important
->>>>>>> master
 	stroke-width: 2px
 	stroke-linecap: round
 	fill: none
@@ -402,15 +310,11 @@ section#hero
 @keyframes showbtn
 	0%
 		opacity: 0
-		bottom: 9vh
+		bottom: 13vh
 	
 	100%
 		opacity: 1
-<<<<<<< HEAD
-		bottom: 17vh
-=======
 		bottom: 15vh
->>>>>>> master
 
 @media (max-width: 440px)
 	section#hero
@@ -423,12 +327,7 @@ section#hero
 		p
 			font-size: 20px
 		.big-logo
-<<<<<<< HEAD
-			max-height: 100vh
-			width: 100vw
-=======
 			right: 2vw
->>>>>>> master
 
 // ============================================================
 // UI Section 
@@ -453,71 +352,121 @@ section#ui
 		display: grid
 		height: calc(100% - 18.5vh)
 		grid-template-rows: 1fr 1fr 1fr 1fr
-		.item
-			padding: 12px
-<<<<<<< HEAD
-=======
-			padding-bottom: 0
->>>>>>> master
-			opacity: 0.15
-			transition: opacity 0.3s ease
-			&::before,
-			&::after
-				opacity: inherit
-			p
-				font-size: 30px
-			.sub
-				font-size: 16px
-<<<<<<< HEAD
-				font-style: italic
-				font-weight: 300
-				opacity: 0
-=======
-				line-height: 110%
-				font-style: italic
-				font-weight: 300
-				opacity: 0
-			a
-				position: absolute
-				right: 6px
-				top: 22px
-				display: flex
-				align-items: center
-				gap: 4px
-				background-color: #E1EAF2
-				border-radius: 20px
-				padding: 4px 12px
-				transition: all 0.3s
-				visibility: hidden
-				&:hover
-					top: 18px
-					background-color: #EEF3F8
-					box-shadow: 0 4px 0 rgba(black, 0.1)
 
->>>>>>> master
-			&.selected
-				opacity: 1
-				background-color: #E1EAF2
-				&::before
-					content: "\201C"
-					position: absolute
-					font-size: 34px
-					left: -18px
-					top: 12px
-				&::after
-					content: "\201D"
-					position: absolute
-					font-size: 34px
-					right: -16px
-					top: 12px
-				.sub
-					opacity: 0.5
-<<<<<<< HEAD
-=======
-				a
-					visibility: visible
-					
->>>>>>> master
+	.item
+		padding: 12px
+		padding-bottom: 0
+		opacity: 0.15
+		transition: opacity 0.3s ease
+		&::before,
+		&::after
+			opacity: inherit
+		&.selected
+			opacity: 1
+			background-color: $bgc
+			&::before
+				content: "\201C"
+				position: absolute
+				font-size: 34px
+				left: -18px
+				top: 12px
+			&::after
+				content: "\201D"
+				position: absolute
+				font-size: 34px
+				right: -16px
+				top: 12px
+			.sub,
+			.buttons
+				visibility: visible
+
+	.sub,
+	.buttons
+		visibility: hidden
+
+	.label
+		display: flex
+		align-items: center
+		justify-content: space-between
+		font-size: 24px
+		margin-bottom: 4px
+
+	.sub p
+		font-size: 20px
+		font-weight: 300
+		color: $bk3
+		
+
+	.buttons
+		display: flex
+		align-items: center
+		gap: 2px
+
+	button
+		width: 32px
+		height: 32px
+		border-radius: 50%
+		background-color: transparent
+		transition: all 0.3s
+		display: flex
+		align-items: center
+		justify-content: center
+		cursor: pointer
+		img
+			display: block
+		&[data-icon='view'].is-active
+			background-color: rgba($cta, 0.1)
+			border: 1px solid rgba($cta, 0.1)
+
+	.details
+		width: 60vw
+		height: 0px
+		background-color: rgba($bk1, 0.85)
+		position: fixed
+		left: 34vw
+		bottom: 2vh
+		z-index: 1
+		backdrop-filter: blur(0px)
+		opacity: 0
+		transition: all 0.6s
+		transform-origin: center bottom
+		padding: 40px 20px
+		padding-right: 40px
+		color: white
+		display: flex
+		flex-direction: column
+		box-shadow: 0 -20px 45px -20px rgba(0, 0, 0, 0.4)
+		gap: 8px
+		&.visible
+			opacity: 1
+			height: 240px
+			min-height: fit-content
+			backdrop-filter: blur(5px)
+
+	.role
+		font-size: 16px
+		line-height: 110%
+		font-style: italic
+		margin-bottom: 8px
+		font-weight: 300
+		opacity: 0.7
+
+	.task
+		padding-bottom: 12px
+		border-bottom: 1px solid white
+
+	.task,
+	.intro
+		font-size: 18px
+		font-weight: 300
+		margin-top: 8px
+		line-height: 120%
+		letter-spacing: 0.5px
+		span
+			font-size: 22px
+			font-weight: 600
+			font-family: 'Sorts Mill Goudy', serif
+			font-style: italic
 
 	.grid-item.item-gallery
 		grid-column: 3
@@ -527,29 +476,31 @@ section#ui
 		height: 100%
 		overflow: hidden
 		background-color: white
-		.img-wrapper
-			display: block	
-			position: absolute
-			top: 0
-			left: 0
-			width: 100%
-			height: auto // 讓高度隨圖片撐開
-			opacity: 0
-			visibility: hidden
-			will-change: transform // 提升效能
-			img
-				width: 100%
-				height: auto // 確保長圖依比例顯示
-				display: block
 
-<<<<<<< HEAD
-=======
+	.img-wrapper
+		display: block	
+		position: absolute
+		top: 0
+		left: 0
+		width: 100%
+		height: auto
+		opacity: 0
+		visibility: hidden
+		transition: opacity 0.4s ease, transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94)
+		will-change: transform
+		img
+			width: 100%
+			height: auto
+			display: block
+		&.show
+			opacity: 1
+			visibility: visible
+
 @media (max-width: 820px) // iPad Air
 	section#ui
 		.animation-wrapper
 			max-width: 160px
 
->>>>>>> master
 @media (max-width: 440px)
 	section#ui
 		.grid-container
@@ -561,51 +512,69 @@ section#ui
 			grid-row: auto
 
 		.animation-wrapper
+			max-width: 100%
 			width: 70%
 			height: 100px
-<<<<<<< HEAD
-=======
 			top: 12px
->>>>>>> master
 
 		.gallery_menu
 			display: block
 			height: 15vh
 			.item
-<<<<<<< HEAD
-=======
 				width: 100%
->>>>>>> master
 				opacity: 1
 				position: absolute
 				opacity: 0
 				padding-top: 4px
+				top: 12px
 				&.selected
-					background-color: #EEF3F8
+					background-color: $bgc
+					top: 12px
+					opacity: 1
 				&::before,
 				&::after
 					display: none
-<<<<<<< HEAD
-=======
-				a
-					top: 12px
-		.sub span, .sub br
-			display: none
+
+		.details
+			width: 88vw
+			left: 6vw
+			gap: 16px
+			padding: 28px 20px
+			&.visible
+				height: 300px
+
+			.task,
+			.intro
+				font-size: 17px
+				span
+					font-size: 20px
+		.buttons
+			gap: 8px
+			z-index: 1
+
+		button
+			width: 36px
+			height: 36px
+			img
+				width: 36px
+				height: 24px
 
 @media (max-width: 375px) // iPhone SE
 	section#ui
 		.animation-wrapper
 			top: 0
-		.item.selected
-			top: -26px
->>>>>>> master
+		.gallery_menu 
+			.item
+				top: -20px
+				&.selected
+					top: -20px
 
 // ============================================================
 // UX Section
 // ============================================================
 
 section#ux
-	background-color: black
+	background-color: $bk1
 	overflow: hidden
 
 	.stroke-text
@@ -648,17 +617,26 @@ section#ux
 
 	.data
 		margin-top: 60px
-		p
-			font-size: 36px
-			text-align: right
-			color: white
-			&:last-of-type
-				font-family: 'Sorts Mill Goudy', serif
-
+		color: white
+		text-align: right
 		.number
-			font-size: 120px
-			line-height: 100px
+			font-size: 160px
+			line-height: 120px
 			font-weight: 100
+
+		.sec
+			font-size: 48px
+			line-height: 50px
+
+		.extra
+			font-size: 28px
+			margin-top: 30px
+			font-weight: 300
+
+		.footnote
+			font-size: 16px
+			font-style: italic
+			font-family: 'Sorts Mill Goudy', serif
 
 #particle-section
 	width: 100%
@@ -686,19 +664,31 @@ section#ux
 			flex-direction: column-reverse
 			align-items: center
 			gap: 100px
+			height: 55vh
 
-		.data p
-			text-align: center
-			margin-top: 20px
-			&.number
-				font-size: 140px
+		.data
+			margin-top: 0
+			p
+				text-align: center
+				margin-top: 20px
+				font-size: 32px
+				margin-top: 4px
+				&.number
+					font-size: 120px
+				&.sec
+					font-size: 24px
+					line-height: 120%
+				&.footnote
+					font-size: 12px
+				&.extra
+					font-size: 20px
+					margin-top: 4px
 
 		.tools
 			width: 100%
 			gap: 12px 16px
 			img
 				height: 22px
-
 
 // ============================================================
 // Graphic Section
@@ -733,17 +723,9 @@ section#graphic
 		justify-content: center
 		padding: 20px 3vw
 		gap: 10px
-<<<<<<< HEAD
-		img
-			display: block
-			min-width: 150px
-			width: 40%
-			height: auto
-=======
 		.img-bundle
 			min-width: 150px
 			width: 40%
->>>>>>> master
 
 		.card
 			position: absolute
@@ -763,17 +745,9 @@ section#graphic
 			align-items: center
 			padding: 20px 3vw
 			gap: 20px
-<<<<<<< HEAD
-			img
-				display: block
-				min-width: 120px
-				width: 30%
-				height: auto
-=======
 			.img-bundle
 				min-width: 120px
 				width: 30%
->>>>>>> master
 				aspect-ratio: 1 / 1
 
 		.card-2 // 第三張展示卡
@@ -781,11 +755,6 @@ section#graphic
 			height: 90vh
 			background-color: #2E3D4B
 			z-index: 3
-<<<<<<< HEAD
-			img
-				width: 100%
-
-=======
 			.img-bundle
 				width: 100%
 
@@ -794,7 +763,6 @@ section#graphic
 		.animation-wrapper
 			width: 200px
 
->>>>>>> master
 @media (max-width: 440px)
 	section#graphic
 		grid-template-columns: 1fr
@@ -806,22 +774,14 @@ section#graphic
 			right: 0vw
 			width: 94vw
 			height: 76vh
-<<<<<<< HEAD
-			img
-=======
 			.img-bundle
->>>>>>> master
 				min-width: 60px
 
 			.card-1
 				width: 91vw
 				height: 76vh
 				padding: 20px 6vw
-<<<<<<< HEAD
-				img
-=======
 				.img-bundle
->>>>>>> master
 					width: 45%
 
 			.card-2
@@ -924,32 +884,14 @@ section#logo
 			transform: scale(1)
 			transition: all 0.5s
 
-<<<<<<< HEAD
-
-@media (max-width: 440px)
-	section#logo
-		.grid-container
-			padding-top: 8vh
-			grid-template-columns: 1fr 3vw 1fr
-			grid-template-rows: 16vh repeat(3, 3vh 1fr)
-
-		.grid-item:first-child
-			grid-column: 1 / -1
-			padding: 0 12px
-
-		.animation-wrapper
-			width: 35%
-			margin-top: 0
-
-		.section_title p
-				font-size: 20px
-=======
 @media (max-width: 820px) // iPad Air
 	section#logo
+		.animation-wrapper
+			margin-top: 40px
+
 		.section_title p 
 			font-size: 20px
-			top: 24px
->>>>>>> master
+			top: 44px
 
 		.logo img
 			max-width: 60%
@@ -991,8 +933,6 @@ section#logo
 				img
 					transform: scale(0.7)
 
-<<<<<<< HEAD
-=======
 @media (max-width: 440px)
 	section#logo
 		.grid-container
@@ -1005,17 +945,21 @@ section#logo
 			padding: 0 12px
 
 		.animation-wrapper
-			width: 35%
-			margin-top: 0
+			width: 33%
+			margin-top: 4px
+
+		.section_title p 
+			top: 12px
+			line-height: 120%
 
 @media (max-width: 375px) // iPhone SE
 	section#logo
+		.animation-wrapper
+			margin-top: 0px
 		.section_title p 
 			font-size: 18px
-			top: -6px
-			line-height: 120%
+			top: -2px
 
->>>>>>> master
 // ============================================================
 // About Section
 // ============================================================
@@ -1043,9 +987,6 @@ section#about
 			font-family: 'Sorts Mill Goudy', serif
 			font-size: 40px
 			margin-top: 20px
-		&.fin
-			font-family: 'Sorts Mill Goudy', serif
-			font-style: italic
 
 	.logo
 		display: flex
@@ -1055,6 +996,26 @@ section#about
 		img
 			max-width: 80%
 			max-height: 120px
+	
+	// .fin
+	// 	top: 2vh
+
+	// .fin-1 .animation-wrapper
+	// 	width: 45%
+	// 	margin-top: 0
+	// 	margin-bottom: 0
+
+	// .fin-2 .animation-wrapper
+	// 	width: 12%
+	// 	margin-top: 0
+	// 	margin-bottom: 0
+	// 	top: -65px
+
+	// .fin-3 .animation-wrapper
+	// 	width: 27%
+	// 	margin-top: 0
+	// 	margin-bottom: 0
+	// 	top: -135px
 
 @media (max-width: 440px)
 	section#about
@@ -1068,30 +1029,27 @@ section#about
 
 		.animation-wrapper
 			width: 45%
-			margin-top: 0
+			margin-top: 6px
 
 		p
-			font-size: 20px
+			font-size: 18px
+			line-height: 150%
 			&.name
 				font-size: 30px
-			&.fin
-				font-size: 40px
 
 		.logo
 			justify-content: start
 
-<<<<<<< HEAD
-=======
 @media (max-width: 375px) // iPhone SE
 	section#about
+		.animation-wrapper
+			margin-top: 0
 		p.name
 			font-size: 26px
 			& ~ p
 				font-size: 18px
-		p.fin
-			font-size: 32px
+				line-height: 140%
 
->>>>>>> master
 // ============================================================
 // Footer
 // ============================================================
@@ -1099,9 +1057,9 @@ section#about
 footer
 	display: flex
 	padding: 20px 40px
-	color: $gray
+	color: $bk2
 	justify-content: space-between
-	border-top: 1px solid rgba($gray, 0.3)
+	border-top: 1px solid rgba($bk2, 0.3)
 	p
 		font-weight: 300
 		letter-spacing: 1px
@@ -1117,15 +1075,9 @@ footer
 		display: block
 		&::after // 懶得改圖，加大白色範圍
 			content: ''
-<<<<<<< HEAD
-			width: 40px
-			height: 40px
-			border-radius: 20px
-=======
 			width: 46px
 			height: 46px
 			border-radius: 23px
->>>>>>> master
 			background-color: white
 			position: absolute
 			left: 50%
@@ -1141,12 +1093,6 @@ footer
 		padding: 40px 6vw 20px
 		flex-direction: column-reverse
 		align-items: center
-<<<<<<< HEAD
-		gap: 20px
-		p
-			font-size: 14px
-
-=======
 		gap: 40px
 		p
 			font-size: 14px
@@ -1155,4 +1101,115 @@ footer
 	footer p
 		font-size: 12px
 
->>>>>>> master
+// ============================================================
+// Form
+// ============================================================
+
+#contact-modal
+	position: fixed
+	top: 0
+	left: 0
+	width: 100%
+	height: 100%
+	z-index: -1000 // 隱藏時放在最底層
+	opacity: 0
+	visibility: hidden // 確保隱藏時無法被點擊
+	pointer-events: none
+	display: flex // 保持 flex 佈局
+	align-items: center
+	justify-content: center
+	backdrop-filter: blur(0px)
+	background: rgba(0, 0, 0, 0.2)
+	transition: opacity 0.4s ease, visibility 0.4s step-end, z-index 0.4s step-end
+
+	// 當開啟時的狀態
+	&.is-open
+		z-index: 2000 // 高於所有 UI
+		opacity: 1
+		visibility: visible
+		pointer-events: auto
+		backdrop-filter: blur(5px)
+		transition: opacity 0.4s ease, visibility 0s, z-index 0s
+
+	.modal-content
+		background: white
+		padding: 40px
+		border-radius: 12px
+		position: relative
+		width: 90%
+		max-width: 500px
+		// 初始位移：稍微往下一點
+		transform: translateY(10px) scale(0.9)
+		transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1)
+
+	// 開啟時內容滑上來
+	&.is-open .modal-content
+		transform: translateY(0) scale(1)
+
+	// 以下表單樣式 -------------------------------------
+
+	h3
+		font-family: 'Sorts Mill Goudy', serif
+		font-size: 32px
+		text-align: center
+		margin-bottom: 28px
+
+	input,
+	textarea,
+	#submit-btn
+		font-family: 'Source Sans 3', sans-serif
+		font-size: 18px
+		font-weight: 300
+		width: 100%
+		padding: 8px 12px
+		border: 1px solid rgba($bk2, 0.4)
+		&:focus
+			border-color: $cta
+
+	#submit-btn
+		background-color: $cta
+		padding: 16px
+		font-size: 22px
+		border: none
+		border-radius: 4px
+		color: white
+		font-weight: 500
+		&:disabled
+			opacity: 0.6
+			cursor: not-allowed
+
+	textarea
+		height: 140px
+		resize: none
+
+	#result
+		font-size: 18px
+		margin-top: 15px
+		padding: 10px
+		border-radius: 4px
+		text-align: center
+		transition: all 0.3s ease
+
+	#contact-form
+		display: flex
+		flex-direction: column
+		gap: 20px
+
+.close-btn
+	position: absolute
+	top: 0px
+	right: 15px
+	font-size: 40px
+	font-weight: 200
+	border: none
+	background: none
+	cursor: pointer
+	color: #333
+	opacity: 0.4
+
+@media (max-width: 440px)
+	.modal-content
+		padding: 24px
+
+
+
