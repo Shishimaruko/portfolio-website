@@ -1,4 +1,3 @@
 User-agent: *
-Allow: /
+Disallow: /
 
-Sitemap: https://kollin-design.com/sitemap.xml
