@@ -2,13 +2,13 @@
 // 重整頁面強制置頂
 // ====================================================
 
-window.scrollTo(0, 0);
+// window.scrollTo(0, 0);
 
-window.addEventListener('load', () => {
-    setTimeout(() => {
-        window.scrollTo(0, 0);
-    }, 10);
-});
+// window.addEventListener('load', () => {
+//     setTimeout(() => {
+//         window.scrollTo(0, 0);
+//     }, 10);
+// });
 
 // ====================================================
 // 行動導覽列開關
@@ -512,101 +512,44 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // ===================================================
-// UI 作品圖片滾動切換邏輯 滾動加點擊版 *閃跳待修
-// ===================================================
-
-// gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
-
-// const uiSection = document.querySelector('#ui');
-// const menuItems = document.querySelectorAll('.gallery_menu .item');
-// const imgWrappers = document.querySelectorAll('.gallery .img-wrapper');
-
-// // 1. 封裝切換函式
-// function goToSection(index) {
-//   // 切換選單
-//   menuItems.forEach((item, i) => item.classList.toggle('selected', i === index));
-//   // 切換圖片
-//   imgWrappers.forEach((img, i) => img.classList.toggle('show', i === index));
-// }
-
-// // 2. 建立主 Pin 效果
-// ScrollTrigger.create({
-//   trigger: uiSection,
-//   start: "top top",
-//   end: "+=3000", // 總滾動距離
-//   pin: true,
-//   scrub: true
-// });
-
-// // 3. 建立 4 個子區間來觸發 class 切換
-// menuItems.forEach((item, index) => {
-//   ScrollTrigger.create({
-//     trigger: uiSection,
-//     // 將 3000px 的總距離平均分配
-//     start: () => `top+=${(3000 / menuItems.length) * index} top`,
-//     end: () => `top+=${(3000 / menuItems.length) * (index + 1)} top`,
-    
-//     // 當滾動進入此區間
-//     onToggle: self => {
-//       if (self.isActive) {
-//         goToSection(index);
-//       }
-//     },
-    
-//     // 解決點擊衝突：點擊時捲動到該區間的起始位置
-//     onRefresh: self => {
-//       item.onclick = (e) => {
-//         e.preventDefault();
-//         gsap.to(window, {
-//           duration: 0.8,
-//           scrollTo: self.start + 2, // 加 2 像素確保觸發在區間內
-//           ease: "power2.inOut",
-//           overwrite: "auto" // 重要：覆蓋掉正在進行的捲動
-//         });
-//       };
-//     }
-//   });
-// });
-
-// ===================================================
-// Graphic 卡片滑入進場 *上下兩個都開會造成 GSAP 壞掉
+// Graphic 卡片滑入進場
 // =================================================== 
 
-// const initGraphicAnimation = () => {
-//     gsap.registerPlugin(ScrollTrigger);
+const initGraphicAnimation = () => {
+    gsap.registerPlugin(ScrollTrigger);
 
-//     const section = document.querySelector('section#graphic');
-//     const cards = section.querySelectorAll('.card');
+    const section = document.querySelector('section#graphic');
+    const cards = section.querySelectorAll('.card');
 
-//     if (!section || cards.length === 0) return;
+    if (!section || cards.length === 0) return;
 
-//     const tl = gsap.timeline({
-//         scrollTrigger: {
-//             trigger: section,
-//             start: "top top",      // 當 section 頂部碰到視窗頂部時開始
-//             end: "+=2000",         // 增加這個數值可以讓動畫變慢（需要滑更久）
-//             pin: true,             // 固定住 section
-//             scrub: 1,              // 動畫跟隨滾輪
-//             // pinSpacing: false,
-//             anticipatePin: 1
-//         }
-//     });
+    const tl = gsap.timeline({
+        scrollTrigger: {
+            trigger: section,
+            start: "top top",      // 當 section 頂部碰到視窗頂部時開始
+            end: "+=2000",         // 增加這個數值可以讓動畫變慢（需要滑更久）
+            pin: true,             // 固定住 section
+            scrub: 1,              // 動畫跟隨滾輪
+            // pinSpacing: false,
+            anticipatePin: 1
+        }
+    });
 
-//     // 動畫序列
-//     tl.to(cards[0], {
-//         x: "3.3vw",                  // 第一張滑入原點位置
-//         ease: "power2.out",
-//         duration: 4
-//     })
-//     .to(cards[1], {
-//         x: "6vw",                  // 第二張滑入原點位置
-//         ease: "power2.out",
-//         duration: 4
-//     }, "-=1.5");                   // 在第一張還沒跑完時就開始 (重疊進場)
+    // 動畫序列
+    tl.to(cards[0], {
+        x: "0vw",                  // 第一張滑入原點位置
+        ease: "power2.out",
+        duration: 4
+    })
+    .to(cards[1], {
+        x: "3vw",                  // 第二張滑入原點位置
+        ease: "power2.out",
+        duration: 4
+    }, "-=1.5");                   // 在第一張還沒跑完時就開始 (重疊進場)
 
-// };
+};
 
-// window.addEventListener('load', initGraphicAnimation);
+window.addEventListener('load', initGraphicAnimation);
 
 // ===================================================
 // 開關表單、送出表單回饋訊息
