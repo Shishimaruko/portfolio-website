@@ -93,8 +93,8 @@ html(lang="en")
         ul
           li
             a.arflex-btn(href='#ui' data-text='Portfolio')
-          //- li
-          //-   a.arflex-btn(href='#graphic' data-text='Gallery')
+          li
+            a.arflex-btn(href='#graphic' data-text='Gallery')
           li
             a.arflex-btn(href='#about' data-text='About')
           li
@@ -284,52 +284,79 @@ html(lang="en")
       //- ========================================================
       //- Graphic Section
       //- ========================================================
-      //- section#graphic
-      //-   //- 內容層
-      //-   .grid-container
-      //-     //- row 1
-      //-     .grid-item
-      //-       .section_title
-      //-         +text_draw_outline('Graphic design', 'title_graphic')
-      //-     .grid-item
-      //-     .grid-item.gallery-wrapper
-      //-       +responsive_img('graphic_project/project_1-1', 'gallery works', '0')
-      //-       +responsive_img('graphic_project/project_1-2', 'gallery works', '1')
-      //-       +responsive_img('graphic_project/project_1-3', 'gallery works', '2')
-      //-       +responsive_img('graphic_project/project_1-4', 'gallery works', '3')
+      section#graphic
+        //- 內容層
+        .grid-container
+          //- row 1
+          .grid-item
+            .section_title
+              +text_draw_outline('Graphic design', 'title_graphic')
+          .grid-item
 
-      //-       .card.card-1
-      //-         +responsive_img('graphic_project/project_2-1', 'gallery works', '0')
-      //-         +responsive_img('graphic_project/project_2-2', 'gallery works', '1')
-      //-         +responsive_img('graphic_project/project_2-3', 'gallery works', '2')
-      //-         +responsive_img('graphic_project/project_2-4', 'gallery works', '3')
-      //-         +responsive_img('graphic_project/project_2-5', 'gallery works', '4')
-      //-         +responsive_img('graphic_project/project_2-6', 'gallery works', '5')
-      //-         +responsive_img('graphic_project/project_2-7', 'gallery works', '6').m-hide
-      //-         +responsive_img('graphic_project/project_2-8', 'gallery works', '7').m-hide
-      //-         +responsive_img('graphic_project/project_2-9', 'gallery works', '8').m-hide
-
-      //-       .card.card-2
-      //-         +responsive_img('graphic_project/project_3-1', 'gallery works', '0')
+          //- 第一畫布 底層不滑動
+          .grid-item.gallery-wrapper
+            h4 Corporate Identity: Avatar Set
+            .select-pics
+              +responsive_img('gallery/Avatar/Alvin', 'gallery works', '0')
+              +responsive_img('gallery/Avatar/Adam', 'gallery works', '1')
+              +responsive_img('gallery/Avatar/Angelina', 'gallery works', '2')
+              +responsive_img('gallery/Avatar/Micah', 'gallery works', '3')
+              +responsive_img('gallery/Avatar/Tars', 'gallery works', '4')
+              +responsive_img('gallery/Avatar/Tony', 'gallery works', '5')
+              +responsive_img('gallery/Avatar/Vladka', 'gallery works', '6')
+              +responsive_img('gallery/Avatar/Bonnie', 'gallery works', '7')
+              +responsive_img('gallery/Avatar/Melody', 'gallery works', '8')
+              +responsive_img('gallery/Avatar/Patrice', 'gallery works', '9').m-only
+              +responsive_img('gallery/Avatar/Sabina', 'gallery works', '10').m-only
+              +responsive_img('gallery/Avatar/Michael', 'gallery works', '11').m-only
+              +responsive_img('gallery/Avatar/Brian', 'gallery works', '12').m-only
+              +responsive_img('gallery/Avatar/Alicia', 'gallery works', '13').m-only
+              +responsive_img('gallery/Avatar/Andy', 'gallery works', '14').m-only
+            
+            //- 第二畫布，第一張卡片
+            .card.card-1
+              h4 Daily Illustration Challenge
+              .select-pics
+                +responsive_img('gallery/365_hand/0201', 'gallery works', '0')
+                +responsive_img('gallery/365_hand/0086', 'gallery works', '1')
+                +responsive_img('gallery/365_hand/0035', 'gallery works', '2')
+                +responsive_img('gallery/365_hand/0037', 'gallery works', '3')
+                +responsive_img('gallery/365_hand/0011', 'gallery works', '4')
+                +responsive_img('gallery/365_hand/0075', 'gallery works', '5')
+                +responsive_img('gallery/365_hand/0043', 'gallery works', '6').m-hide
+                +responsive_img('gallery/365_hand/0018', 'gallery works', '7').m-hide
+                +responsive_img('gallery/365_hand/0147', 'gallery works', '8').m-hide
               
-      //-   //- 線條層
-      //-   svg.grid-layout-lines(viewBox="0 0 100 100" preserveAspectRatio="none")
-      //-     //- Vertical line
-      //-     line.line-v(x1="6%" y1="0%" x2="6%" y2="100%")
-      //-     line.line-v(x1="33.3%" y1="0%" x2="33.3%" y2="100%").m-hide
-      //-     line.line-v(x1="36.3%" y1="0%" x2="36.3%" y2="100%").m-hide
-      //-     line.line-v(x1="94%" y1="0%" x2="94%" y2="100%")
 
-      //-     //- Horizontal line
-      //-     line.line-h(x1="0" y1="0%" x2="100%" y2="0%")
-      //-     line.line-h(x1="0" y1="8%" x2="100%" y2="8%")
-      //-     line.line-h(x1="0" y1="20%" x2="36.3%" y2="20%").m-hide
-      //-     line.line-h(x1="0" y1="98%" x2="100%" y2="98%")
-      //-     line.line-h(x1="0" y1="100%" x2="100%" y2="100%")
+            //- 第三畫布，第二張卡片
+            .card.card-2
+              h4 Scene Illustration
+              .select-pics
+                +responsive_img('gallery/m_console/Surfing', 'gallery works', '0')
+                +responsive_img('gallery/m_console/Barista', 'gallery works', '1')
+                +responsive_img('gallery/m_console/Psychic', 'gallery works', '2')
+                +responsive_img('gallery/m_console/Tailor', 'gallery works', '3')
+                //- +responsive_img('gallery/m_console/Porker', 'gallery works', '4')
+              p(href='#') Full showcase coming soon
+              
+        //- 線條層
+        svg.grid-layout-lines(viewBox="0 0 100 100" preserveAspectRatio="none")
+          //- Vertical line
+          line.line-v(x1="6%" y1="0%" x2="6%" y2="100%")
+          line.line-v(x1="33.3%" y1="0%" x2="33.3%" y2="100%").m-hide
+          line.line-v(x1="36.3%" y1="0%" x2="36.3%" y2="100%").m-hide
+          line.line-v(x1="94%" y1="0%" x2="94%" y2="100%")
 
-      //-     //- mobile
-      //-     line.line-h(x1="0" y1="19%" x2="100%" y2="19%").m-only
-      //-     line.line-h(x1="0" y1="22%" x2="100%" y2="22%").m-only
+          //- Horizontal line
+          line.line-h(x1="0" y1="0%" x2="100%" y2="0%")
+          line.line-h(x1="0" y1="8%" x2="100%" y2="8%")
+          line.line-h(x1="0" y1="20%" x2="36.3%" y2="20%").m-hide
+          line.line-h(x1="0" y1="98%" x2="100%" y2="98%")
+          line.line-h(x1="0" y1="100%" x2="100%" y2="100%")
+
+          //- mobile
+          line.line-h(x1="0" y1="19%" x2="100%" y2="19%").m-only
+          line.line-h(x1="0" y1="22%" x2="100%" y2="22%").m-only
 
       //- ========================================================
       //- Logo Section
@@ -457,13 +484,6 @@ html(lang="en")
           .grid-item.m-hide
           .grid-item
           .grid-item
-            //- .fin
-            //-   .fin-1
-            //-     +text_draw_outline(['Dedicado'], 'title_logo')
-            //-   .fin-2
-            //-     +text_draw_outline(['A'], 'title_logo')
-            //-   .fin-3
-            //-     +text_draw_outline(['Max'], 'title_logo')
 
           //- gap row
           .grid-item.m-hide
