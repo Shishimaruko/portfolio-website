@@ -1033,6 +1033,10 @@ section#graphic .grid-item.gallery-wrapper {
       section#graphic .grid-item.gallery-wrapper .card-2 {
         width: 88vw;
         height: 76vh; }
+        section#graphic .grid-item.gallery-wrapper .card-2 .select-pics {
+          gap: 10px; }
+        section#graphic .grid-item.gallery-wrapper .card-2 .img-bundle:nth-of-type(n+2) {
+          width: 28%; }
     section#graphic .animation-wrapper {
       width: 240px;
       height: 14vh;
