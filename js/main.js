@@ -2,13 +2,13 @@
 // 重整頁面強制置頂
 // ====================================================
 
-// window.scrollTo(0, 0);
+window.scrollTo(0, 0);
 
-// window.addEventListener('load', () => {
-//     setTimeout(() => {
-//         window.scrollTo(0, 0);
-//     }, 10);
-// });
+window.addEventListener('load', () => {
+    setTimeout(() => {
+        window.scrollTo(0, 0);
+    }, 10);
+});
 
 // ====================================================
 // 行動導覽列開關
@@ -100,26 +100,61 @@ document.querySelectorAll('.arflex-btn').forEach(btn => {
 // 滑動視窗 Navigation 上滑隱藏
 // ====================================================
 
+// let lastScrollTop = 0;
+// const delta = 5; // 捲動超過 5px 才觸發，防手機誤觸
+// const navbar = document.getElementById('navbar');
+
+// window.addEventListener('scroll', function() {
+//   let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+//   // 如果捲動距離小於 delta，則不執行
+//   if (Math.abs(lastScrollTop - scrollTop) <= delta) return;
+
+//   if (scrollTop > lastScrollTop && scrollTop > 60) {
+//     // 往下捲且超過 navbar 高度時才隱藏
+//     navbar.classList.add('nav-hidden');
+//   } else {
+//     // 往上捲
+//     navbar.classList.remove('nav-hidden');
+//   }
+
+//   lastScrollTop = scrollTop;
+// });
+
+// ====================================================
+// 滑動視窗 Navigation 上滑隱藏 - 優化版 > 觀察
+// ====================================================
+
 let lastScrollTop = 0;
-const delta = 5; // 捲動超過 5px 才觸發，防手機誤觸
+const delta = 5;
 const navbar = document.getElementById('navbar');
+let ticking = false;
 
 window.addEventListener('scroll', function() {
-  let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+  if (!ticking) {
+    // 讓瀏覽器在「準備畫下一幀」時才執行計算
+    window.requestAnimationFrame(function() {
+      let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
 
-  // 如果捲動距離小於 delta，則不執行
-  if (Math.abs(lastScrollTop - scrollTop) <= delta) return;
-
-  if (scrollTop > lastScrollTop && scrollTop > 60) {
-    // 往下捲且超過 navbar 高度時才隱藏
-    navbar.classList.add('nav-hidden');
-  } else {
-    // 往上捲
-    navbar.classList.remove('nav-hidden');
+      // 1. 確保捲動距離超過 delta
+      if (Math.abs(lastScrollTop - scrollTop) > delta) {
+        // 2. 往下捲 (scrollTop 變大) 且 超過一定距離
+        if (scrollTop > lastScrollTop && scrollTop > 60) {
+          navbar.classList.add('nav-hidden');
+        } 
+        // 3. 往上捲 (scrollTop 變小)
+        else {
+          navbar.classList.remove('nav-hidden');
+        }
+        // 4. 更新上次的位置
+        lastScrollTop = scrollTop;
+      }
+      
+      ticking = false;
+    });
+    ticking = true;
   }
-
-  lastScrollTop = scrollTop;
-});
+}, { passive: true }); // 優化：告訴瀏覽器不會阻止捲動，提升流暢度
 
 // ====================================================
 // Hero 點點交錯動態背景
@@ -169,7 +204,7 @@ if (heroCanvas) {
 
 const PARTICLE_CONFIG = {
     particleRGB: { r: 255, g: 255, b: 255 },
-    count: 8000,
+    count: 5000,
     attractionStrength: 0.05,
     influenceRadius: 0.3
 };
