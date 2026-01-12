@@ -3,16 +3,29 @@ $primary-color: #333
 $secondary-color: #666
 $accent-color: #1D4E6A
 $border-color: #ddd
-$font-main: 'Noto Sans TC', sans-serif
 
-// 基礎樣式
+// 1. 定義語系字體
+$font-en: 'Noto Sans', sans-serif
+$font-zh: 'Noto Sans TC', 'Noto Sans', sans-serif
+$font-ja: 'Noto Sans JP', 'Noto Sans', sans-serif
+
+// 多語系
 body
-  font-family: $font-main
+  // 2. 設定預設字體
+  font-family: $font-en
   line-height: 1.6
   color: $primary-color
   margin: 0
   padding: 40px
 
+  // 3. 針對不同語系進行覆寫 (判斷 html/body 的 lang 屬性)
+  &:lang(zh), &:lang(zh-TW)
+    font-family: $font-zh
+  
+  &:lang(ja)
+    font-family: $font-ja
+
+// 基礎樣式
 .container
   max-width: 900px
   margin: 0 auto
