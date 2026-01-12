@@ -1,7 +1,16 @@
 doctype html
 html(lang="en")
   head
-    //- basic meta
+    //- 1. 最優先：網路連接優化
+    link(rel="preconnect", href="https://cdnjs.cloudflare.com")
+    link(rel="preconnect", href="https://fonts.gstatic.com", crossorigin)
+
+    //- 2. 次優先：預載關鍵資源
+    link(rel="preload", href="https://kollin-design.com/cf-fonts/s/sorts-mill-goudy/5.0.11/latin/400/normal.woff2", as="font", type="font/woff2", crossorigin)
+    link(rel="preload", href="https://kollin-design.com/cf-fonts/s/sorts-mill-goudy/5.0.11/latin/400/italic.woff2", as="font", type="font/woff2", crossorigin)
+    
+    //- 3. 基礎 Meta 與 SEO
+    //- Basic Meta & SEO
     meta(charset="UTF-8")
     meta(name="viewport" content="width=device-width, initial-scale=1.0")
     meta(http-equiv="X-UA-Compatible" content="ie=edge")
@@ -49,12 +58,11 @@ html(lang="en")
         ]
       }
 
-    link(rel="preconnect", href="https://fonts.googleapis.com")
-    link(rel="preconnect", href="https://fonts.gstatic.com", crossorigin)
     link(href="https://fonts.googleapis.com/css2?family=Sorts+Mill+Goudy:ital@0;1&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap", rel="stylesheet")
         
     link(rel='preload' href="./css/style.css" as='style')
     link(rel='stylesheet' href='./css/style.css')
+
     link(rel="canonical" href="https://kollin-design.com")
 
     // Google Tag Manager
