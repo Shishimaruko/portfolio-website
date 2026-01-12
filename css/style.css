@@ -272,6 +272,9 @@ section {
   max-width: 600px;
   z-index: 2; }
 
+.card, .img-wrapper, .animation-wrapper, #dotCanvas, #particle-section {
+  will-change: transform, opacity; }
+
 [data-fade] {
   opacity: 0;
   will-change: transform, opacity; }
