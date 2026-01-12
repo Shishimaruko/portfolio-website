@@ -1,9 +1,13 @@
 body {
-  font-family: "Noto Sans TC", sans-serif;
+  font-family: "Noto Sans", sans-serif;
   line-height: 1.6;
   color: #333;
   margin: 0;
   padding: 40px; }
+  body:lang(zh), body:lang(zh-TW) {
+    font-family: "Noto Sans TC", "Noto Sans", sans-serif; }
+  body:lang(ja) {
+    font-family: "Noto Sans JP", "Noto Sans", sans-serif; }
 
 .container {
   max-width: 900px;
