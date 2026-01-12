@@ -133,6 +133,10 @@ footer {
     -ms-grid-columns: 1fr;
     grid-template-columns: 1fr; } }
 
+@media (min-width: 441px) {
+  .m-only {
+    display: none; } }
+
 @media (max-width: 440px) {
   body {
     padding: 20px; }
@@ -154,4 +158,8 @@ footer {
     gap: 10px; }
     footer p {
       width: 100%;
-      margin: 0; } }
+      margin: 0; }
+  .sub-title {
+    font-size: 0.8em; }
+  .m-hide {
+    display: none; } }
