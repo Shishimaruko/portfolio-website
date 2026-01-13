@@ -15,7 +15,9 @@ $bk3: #595C61
 $bk4: #9298A2
 $cta: #1D4E6A
 $bgc: #EEF3F8
-// test
+
+$font-title: 'Sorts Mill Goudy', serif
+$font-content: 'Source Sans 3', sans-serif
 
 // ============================================================
 // General
@@ -26,10 +28,10 @@ $bgc: #EEF3F8
 	box-sizing: border-box
 	margin: 0
 	padding: 0
-	font-family: 'Source Sans 3', sans-serif
+	font-family: $font-content
 
 a, button
-	font-family: 'Sorts Mill Goudy', serif
+	font-family: $font-title
 	color: $bk1
 	text-decoration: none
 
@@ -201,7 +203,7 @@ section#hero
 		margin-top: 25vh
 
 	.tips
-		font-family: 'Sorts Mill Goudy', serif
+		font-family: $font-title
 		font-size: 18px
 		position: absolute
 		left: 50%
@@ -469,7 +471,7 @@ section#ui
 		span
 			font-size: 22px
 			font-weight: 600
-			font-family: 'Sorts Mill Goudy', serif
+			font-family: $font-title
 			font-style: italic
 
 	.grid-item.item-gallery
@@ -615,7 +617,7 @@ section#ux
 			left: 0
 			top: -40px
 			color: white
-			font-family: 'Source Sans 3', sans-serif
+			font-family: $font-content
 			font-size: 18px
 			opacity: 0.7
 
@@ -640,7 +642,7 @@ section#ux
 		.footnote
 			font-size: 16px
 			font-style: italic
-			font-family: 'Sorts Mill Goudy', serif
+			font-family: $font-title
 
 #particle-section
 	width: 100%
@@ -882,7 +884,7 @@ section#logo
 		&::before
 			content: ''
 			color: white
-			font-family: 'Source Sans 3', sans-serif
+			font-family: $font-content
 			font-size: 26px
 			text-align: center
 			line-height: 120%
@@ -1046,7 +1048,7 @@ section#about
 		color: #414141
 		max-width: 680px
 		&.name
-			font-family: 'Sorts Mill Goudy', serif
+			font-family: $font-title
 			font-size: 40px
 			margin-top: 20px
 
@@ -1211,7 +1213,7 @@ footer
 	// 以下表單樣式 -------------------------------------
 
 	h3
-		font-family: 'Sorts Mill Goudy', serif
+		font-family: $font-title
 		font-size: 32px
 		text-align: center
 		margin-bottom: 28px
@@ -1219,7 +1221,7 @@ footer
 	input,
 	textarea,
 	#submit-btn
-		font-family: 'Source Sans 3', sans-serif
+		font-family: $font-content
 		font-size: 18px
 		font-weight: 300
 		width: 100%

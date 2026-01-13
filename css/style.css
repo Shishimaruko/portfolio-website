@@ -159,10 +159,10 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: 'Source Sans 3', sans-serif; }
+  font-family: "Source Sans 3", sans-serif; }
 
 a, button {
-  font-family: 'Sorts Mill Goudy', serif;
+  font-family: "Sorts Mill Goudy", serif;
   color: #2E3034;
   text-decoration: none; }
 
@@ -330,7 +330,7 @@ section#hero {
     margin-left: 8vw;
     margin-top: 25vh; }
   section#hero .tips {
-    font-family: 'Sorts Mill Goudy', serif;
+    font-family: "Sorts Mill Goudy", serif;
     font-size: 18px;
     position: absolute;
     left: 50%;
@@ -661,7 +661,7 @@ section#ui .intro {
   section#ui .intro span {
     font-size: 22px;
     font-weight: 600;
-    font-family: 'Sorts Mill Goudy', serif;
+    font-family: "Sorts Mill Goudy", serif;
     font-style: italic; }
 
 section#ui .grid-item.item-gallery {
@@ -818,7 +818,7 @@ section#ux {
       left: 0;
       top: -40px;
       color: white;
-      font-family: 'Source Sans 3', sans-serif;
+      font-family: "Source Sans 3", sans-serif;
       font-size: 18px;
       opacity: 0.7; }
   section#ux .data {
@@ -839,7 +839,7 @@ section#ux {
     section#ux .data .footnote {
       font-size: 16px;
       font-style: italic;
-      font-family: 'Sorts Mill Goudy', serif; }
+      font-family: "Sorts Mill Goudy", serif; }
 
 #particle-section {
   width: 100%;
@@ -1079,7 +1079,7 @@ section#logo .grid-item[data='logo'] {
   section#logo .grid-item[data='logo']::before {
     content: '';
     color: white;
-    font-family: 'Source Sans 3', sans-serif;
+    font-family: "Source Sans 3", sans-serif;
     font-size: 26px;
     text-align: center;
     line-height: 120%;
@@ -1238,7 +1238,7 @@ section#about p {
   color: #414141;
   max-width: 680px; }
   section#about p.name {
-    font-family: 'Sorts Mill Goudy', serif;
+    font-family: "Sorts Mill Goudy", serif;
     font-size: 40px;
     margin-top: 20px; }
 
@@ -1408,14 +1408,14 @@ footer {
     -ms-transform: translateY(0) scale(1);
     transform: translateY(0) scale(1); }
   #contact-modal h3 {
-    font-family: 'Sorts Mill Goudy', serif;
+    font-family: "Sorts Mill Goudy", serif;
     font-size: 32px;
     text-align: center;
     margin-bottom: 28px; }
   #contact-modal input,
   #contact-modal textarea,
   #contact-modal #submit-btn {
-    font-family: 'Source Sans 3', sans-serif;
+    font-family: "Source Sans 3", sans-serif;
     font-size: 18px;
     font-weight: 300;
     width: 100%;
